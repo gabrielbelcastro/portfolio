@@ -111,9 +111,8 @@
     .feat-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform var(--t-mid) var(--ease); z-index:4; border-radius:var(--r-card) var(--r-card) 0 0; }
     .feat-card:hover::before{ transform:scaleX(1); }
     .feat-card:hover{ background:var(--surface-2); border-color:var(--border-strong); }
-    .ghost-index{ position:absolute; top:-18px; left:-6px; font-family:"Geist Mono",monospace; font-weight:500; font-size:88px; line-height:1; color:var(--text-faint); z-index:2; pointer-events:none; transition:color var(--t-fast) var(--ease); }
-    @media(max-width:768px){ .ghost-index{ font-size:56px; top:-12px; } }
-    .feat-card:hover .ghost-index{ color:var(--accent); }
+    .idx-num{ font-family:"Geist Mono",monospace; font-weight:600; color:var(--text-muted); letter-spacing:.04em; transition:color var(--t-fast) var(--ease); }
+    .feat-card:hover .idx-num{ color:var(--accent); }
     .media-well{ position:relative; aspect-ratio:16/10; background:var(--surface-inset); border:1px solid var(--border); box-shadow:var(--shadow-well); border-radius:var(--r-sm); margin:0 20px; overflow:hidden; }
     .media-well img{ width:100%; height:100%; object-fit:cover; object-position:top; opacity:.9; transition:opacity var(--t-slow) var(--ease),transform var(--t-slow) var(--ease); }
     .feat-card:hover .media-well img{ opacity:1; transform:scale(1.015); }
@@ -150,7 +149,7 @@
     .drow{ display:grid; grid-template-columns:140px 1fr 46px; align-items:center; gap:12px; padding:7px 0; }
     @media(max-width:520px){ .drow{ grid-template-columns:96px 1fr 40px; gap:8px; } }
     .dtrack{ height:8px; background:var(--surface-inset); border:1px solid var(--border); border-radius:4px; overflow:hidden; }
-    .dfill{ height:100%; background:var(--text-faint); border-radius:3px; transform-origin:left; transform:scaleX(0); transition:transform 900ms var(--ease); }
+    .dfill{ display:block; width:100%; height:100%; background:var(--text-faint); border-radius:3px; transform-origin:left; transform:scaleX(0); transition:transform 900ms var(--ease); }
     .dfill.acc{ background:var(--accent); }
     .month-bars{ display:flex; align-items:flex-end; gap:10px; height:160px; }
     .mbar{ flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; height:100%; justify-content:flex-end; }
@@ -301,9 +300,8 @@
       <div class="feat-grid">
         <!-- Miles Terminal -->
         <article class="feat-card reveal">
-          <span class="ghost-index">01</span>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;">
-            <span class="micro"><span class="muted" data-pt="tipo:">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ai/automation</span></span>
+            <span class="micro" style="display:inline-flex;align-items:center;gap:8px;"><span class="idx-num">01</span><span class="muted" data-pt="categoria:">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2" data-pt="IA e automação">ai/automation</span></span>
             <span class="micro">[ labs aero ]</span>
           </div>
           <div class="media-well" data-mock="miles">
@@ -328,8 +326,8 @@
             </div>
           </div>
           <div style="padding:16px 20px 0;"><h3 class="h3">Miles Terminal</h3></div>
-          <p class="body desc-clamp" style="padding:8px 20px 0;" data-pt="Central multi-companhia em produção. Backend duplo, navegador stealth, pipeline de OCR em 3 camadas terminando no Claude Vision, e dashboard de desempenho client-side.">Multi-carrier command center in production. Dual backend, stealth browser, a 3-layer OCR pipeline ending in Claude Vision, and a client-side performance dashboard.</p>
-          <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;">3-LAYER OCR · <span class="accent">LEVENSHTEIN</span> IATA · pm2 :3001</div>
+          <p class="body desc-clamp" style="padding:8px 20px 0;" data-pt="Plataforma em produção que reúne a operação de milhas de várias companhias num só painel. Lê os bilhetes automaticamente e mostra o desempenho por emissor, reduzindo o trabalho manual e os erros da equipe.">Production platform that unifies miles operations across airlines in a single panel. It reads tickets automatically and shows per-agent performance, cutting the team's manual work and errors.</p>
+          <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;" data-pt="LEITURA AUTOMÁTICA DE BILHETES · PAINEL POR EMISSOR · EM PRODUÇÃO"><span class="accent">AUTOMATED</span> TICKET READING · PER-AGENT DASHBOARD · LIVE</div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px 18px;gap:12px;">
             <span class="micro">Node.js · Puppeteer · Claude Vision · OCR</span>
             <span class="micro" style="display:inline-flex;align-items:center;gap:6px;"><span class="dot dot-success"></span><span data-pt="produção">production</span></span>
@@ -338,15 +336,14 @@
 
         <!-- Capturador Smiles -->
         <a class="feat-card reveal" href="https://capturador-smiles.labsaero.com" target="_blank" rel="noopener" style="display:block;">
-          <span class="ghost-index">02</span>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;">
-            <span class="micro"><span class="muted" data-pt="tipo:">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ext + SaaS</span></span>
+            <span class="micro" style="display:inline-flex;align-items:center;gap:8px;"><span class="idx-num">02</span><span class="muted" data-pt="categoria:">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2" data-pt="produto SaaS">ext + SaaS</span></span>
             <span class="micro">[ labs aero ]</span>
           </div>
           <div class="media-well"><img src="screenshots/capturador-smiles-landing.jpg" alt="Capturador Smiles landing page" loading="lazy" /></div>
           <div style="padding:16px 20px 0;"><h3 class="h3">Capturador Smiles <span class="arrow">↗</span></h3></div>
-          <p class="body desc-clamp" style="padding:8px 20px 0;" data-pt="Extensão Chrome + backend Python que virou SaaS. Auth Supabase, cobrança Stripe, cofre AES-GCM a partir de um único login, Twilio Verify e edge functions Resend.">Chrome extension + Python backend turned SaaS. Supabase auth, Stripe billing, AES-GCM vault from a single login, Twilio Verify and Resend edge functions.</p>
-          <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;"><span class="accent">438 COMMITS</span> · AES-GCM VAULT · R$ 18,99/mo</div>
+          <p class="body desc-clamp" style="padding:8px 20px 0;" data-pt="Extensão Chrome que cresceu e virou um produto SaaS pago. Login único, cobrança por assinatura e proteção de dados ponta a ponta. No ar, com clientes pagantes.">Chrome extension that grew into a paid SaaS product. Single login, subscription billing and end-to-end data protection. Live, with paying customers.</p>
+          <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;" data-pt="438 COMMITS · COFRE CRIPTOGRAFADO · R$ 18,99/mês"><span class="accent">438 COMMITS</span> · ENCRYPTED VAULT · R$ 18,99/mês</div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px 18px;gap:12px;">
             <span class="micro">Supabase · Stripe · Twilio · Resend</span>
             <span class="micro" style="display:inline-flex;align-items:center;gap:6px;"><span class="dot dot-success"></span>capturador-smiles ↗</span>
@@ -673,6 +670,7 @@
       p.querySelectorAll('.mbar .col').forEach(function(c){ c.style.transform='scaleY(1)'; });
       barIO.unobserve(p); }); },{threshold:0.3});
     document.querySelectorAll('.panel, #monthBars').forEach(function(el){ barIO.observe(el); });
+    setTimeout(function(){ document.querySelectorAll('.dfill').forEach(function(f){ if(getComputedStyle(f).transform.indexOf('matrix(0,')===0||f.style.transform===''){ f.style.transform='scaleX('+((f.dataset.w||0)/100)+')'; } }); document.querySelectorAll('.mbar .col').forEach(function(c){ c.style.transform='scaleY(1)'; }); },2800);
 
     var mockIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting)return; var w=e.target;
       if(w.dataset.mock==='miles'){ var ls=w.querySelectorAll('.log-line'); if(reduced){ ls.forEach(function(l){l.classList.add('in');}); } else { ls.forEach(function(l,i){ setTimeout(function(){ l.classList.add('in'); },i*120); }); } }
