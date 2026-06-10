@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Gabriel Belcastro · AI-Native Operator & Automation Builder</title>
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308090B'/%3E%3Crect x='1' y='1' width='30' height='30' rx='6.5' fill='none' stroke='%231C1D22'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='600' fill='%23C2F04D' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E" />
-  <meta name="description" content="Gabriel Belcastro. AI-native operator and automation builder. Founder of Labs Aero. I wire LLMs into production systems that ship: Miles Terminal, capturadores, autonomous pipelines and modern web." />
+  <meta name="description" content="Gabriel Belcastro. AI-native operator and automation builder. Founder of Labs Aero. I wire LLMs into production systems that ship." />
 
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Gabriel Belcastro · AI-Native Operator & Automation Builder" />
@@ -75,6 +75,8 @@
     .ghost-btn:hover{ background:var(--surface-2); border-color:var(--text-faint); }
     .btn-solid{ background:var(--text); color:var(--bg); font-weight:500; border-radius:var(--r-sm); padding:11px 20px; font-size:14px; transition:transform var(--t-fast),background var(--t-fast); display:inline-flex; align-items:center; gap:8px; }
     .btn-solid:hover{ background:#fff; transform:translateY(-1px); }
+    .lang-btn{ font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.04em; border:1px solid var(--border-strong); background:transparent; border-radius:var(--r-sm); padding:6px 10px; cursor:pointer; color:var(--text-muted); transition:border-color var(--t-fast); }
+    .lang-btn:hover{ border-color:var(--text-faint); }
 
     .status-chip{ display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); background:var(--surface); border-radius:var(--r-pill); padding:5px 12px; }
     @keyframes breathe{ 0%,100%{opacity:1} 50%{opacity:.55} }
@@ -91,7 +93,6 @@
     @media(max-width:768px){ .stats{ grid-template-columns:repeat(2,1fr); }
       .stats .cell:nth-child(3){ border-left:none; } .stats .cell:nth-child(3),.stats .cell:nth-child(4){ border-top:1px solid var(--border); } }
 
-    /* Eco (Labs Aero) feature card — full width */
     .eco-card{ position:relative; border:1px solid var(--border); border-radius:var(--r-card); background:var(--surface); overflow:hidden; display:grid; grid-template-columns:1.1fr 1fr; }
     @media(max-width:860px){ .eco-card{ grid-template-columns:1fr; } }
     .eco-media{ position:relative; background:var(--surface-inset); overflow:hidden; min-height:280px; }
@@ -120,7 +121,6 @@
     .feat-card:hover .arrow, .eco-card:hover .arrow{ transform:translate(2px,-2px); color:var(--accent); }
     .desc-clamp{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
 
-    /* gallery (mockups: extensions + n8n) */
     .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
     @media(max-width:900px){ .gallery{ grid-template-columns:1fr 1fr; } }
     @media(max-width:600px){ .gallery{ grid-template-columns:1fr; } }
@@ -128,7 +128,6 @@
     .gcard:hover{ border-color:var(--border-strong); }
     .gframe{ position:relative; aspect-ratio:16/11; background:var(--surface-inset); overflow:hidden; border-bottom:1px solid var(--border); }
 
-    /* ledger */
     .ledger{ border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
     .ledger-row{ position:relative; display:grid; align-items:center; gap:16px; padding:0 14px; min-height:56px; border-top:1px solid var(--border); transition:background var(--t-fast) var(--ease); }
     .ledger-row:first-child{ border-top:none; }
@@ -141,7 +140,6 @@
     .ftab{ font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.04em; border:1px solid var(--border); background:transparent; color:var(--text-muted); border-radius:var(--r-pill); padding:5px 12px; cursor:pointer; transition:all var(--t-fast); }
     .ftab:hover{ border-color:var(--border-strong); color:var(--text-2); } .ftab.active{ color:var(--accent); border-color:var(--border-strong); }
 
-    /* DATA section */
     .data-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
     @media(max-width:860px){ .data-grid{ grid-template-columns:1fr; } }
     .panel{ border:1px solid var(--border); border-radius:var(--r-card); background:var(--surface); padding:24px; }
@@ -162,7 +160,6 @@
     .tag{ border:1px solid var(--border); background:var(--surface-2); border-radius:var(--r-pill); padding:6px 12px; font-family:"Geist Mono",monospace; font-size:12px; color:var(--text-2); }
     .tag.hi{ border-color:var(--accent-line); color:var(--text); }
 
-    /* contact */
     .contact-list{ border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
     .contact-row{ position:relative; display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; padding:0 6px; border-top:1px solid var(--border); transition:background var(--t-fast); }
     .contact-row:first-child{ border-top:none; } .contact-row:hover{ background:var(--surface-2); }
@@ -174,7 +171,6 @@
     .reveal{ opacity:0; transform:translateY(8px); transition:opacity var(--t-slow) var(--ease),transform var(--t-slow) var(--ease); }
     .reveal.in{ opacity:1; transform:none; }
 
-    /* mockups shared */
     .mock{ position:absolute; inset:0; font-family:"Geist Mono",monospace; }
     .mock-bar{ height:22px; background:var(--surface-2); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 10px; gap:6px; }
     .tl-dot{ width:8px; height:8px; border-radius:50%; background:#2A2C33; }
@@ -186,7 +182,6 @@
     .switch{ width:18px; height:10px; border:1px solid var(--border); background:var(--surface-2); border-radius:var(--r-pill); position:relative; flex:none; } .switch i{ position:absolute; top:1px; right:1px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
     .switch.azul i{ background:var(--azul); }
     .ext-popup{ position:absolute; top:34px; right:12px; width:min(220px,72%); background:var(--surface); border:1px solid var(--border); border-radius:var(--r-sm); box-shadow:var(--shadow-float); overflow:hidden; }
-    /* n8n flow */
     .n8n{ position:absolute; inset:0; padding:14px; background-image:radial-gradient(circle,#15161A 1px,transparent 1px); background-size:18px 18px; }
     .nnode{ position:absolute; border:1px solid var(--border-strong); background:var(--surface); border-radius:8px; padding:6px 8px; font-size:9px; color:var(--text-2); display:flex; align-items:center; gap:5px; white-space:nowrap; }
     .nnode .nd{ width:5px; height:5px; border-radius:50%; background:var(--accent); flex:none; }
@@ -212,12 +207,13 @@
         <span class="monogram">GB</span>
         <span class="mono" style="font-size:12px;color:var(--text);display:none;" data-show-sm>GABRIEL BELCASTRO</span>
       </a>
-      <div style="display:flex;align-items:center;gap:18px;">
-        <a href="#work" class="eyebrow u-grow nav-link" data-sec="work" style="display:none;" data-show-md>WORK</a>
-        <a href="#data" class="eyebrow u-grow nav-link" data-sec="data" style="display:none;" data-show-md>DATA</a>
-        <a href="#about" class="eyebrow u-grow nav-link" data-sec="about" style="display:none;" data-show-md>ABOUT</a>
+      <div style="display:flex;align-items:center;gap:14px;">
+        <a href="#work" class="eyebrow u-grow nav-link" data-sec="work" style="display:none;" data-show-md data-pt="TRABALHO">WORK</a>
+        <a href="#data" class="eyebrow u-grow nav-link" data-sec="data" style="display:none;" data-show-md data-pt="DADOS">DATA</a>
+        <a href="#about" class="eyebrow u-grow nav-link" data-sec="about" style="display:none;" data-show-md data-pt="SOBRE">ABOUT</a>
         <span style="width:1px;height:18px;background:var(--border-strong);display:none;" data-show-md></span>
-        <a href="#contact" class="ghost-btn" style="display:none;" data-show-sm>Get in touch</a>
+        <button class="lang-btn" data-lang-btn aria-label="Language / Idioma"><span class="l-en">EN</span><span class="muted"> / </span><span class="l-pt">PT</span></button>
+        <a href="#contact" class="ghost-btn" style="display:none;" data-show-sm data-pt="Contato">Get in touch</a>
         <button id="menuBtn" aria-label="Menu" aria-expanded="false" class="ghost-btn" style="display:inline-flex;flex-direction:column;gap:3px;padding:9px 10px;" data-show-mobile>
           <span style="width:14px;height:1px;background:var(--text);display:block;"></span>
           <span style="width:14px;height:1px;background:var(--text);display:block;"></span>
@@ -227,10 +223,10 @@
     </div>
   </nav>
   <div id="mobileMenu" style="position:fixed;top:64px;inset-inline:0;z-index:49;background:var(--surface);border-bottom:1px solid var(--border);display:none;">
-    <a href="#work" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">Work</a>
-    <a href="#data" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">Data</a>
-    <a href="#about" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">About</a>
-    <a href="#contact" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">Contact</a>
+    <a href="#work" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);" data-pt="Trabalho">Work</a>
+    <a href="#data" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);" data-pt="Dados">Data</a>
+    <a href="#about" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);" data-pt="Sobre">About</a>
+    <a href="#contact" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);" data-pt="Contato">Contact</a>
   </div>
 
   <!-- HERO -->
@@ -243,31 +239,29 @@
         <span class="eyebrow">RIO DE JANEIRO, BR</span>
         <span class="status-chip reveal" style="margin-left:auto;">
           <span class="dot dot-live"></span>
-          <span class="mono" style="font-size:12px;color:var(--text-2);">Available for remote work</span>
+          <span class="mono" style="font-size:12px;color:var(--text-2);" data-pt="Disponível para trabalho remoto">Available for remote work</span>
         </span>
       </div>
       <h1 class="h1" style="margin-top:40px;max-width:14ch;">
-        <span class="hl-line" style="display:block;">I wire LLMs into</span>
-        <span class="hl-line" style="display:block;">production systems</span>
-        <span class="hl-line" style="display:block;">that <span class="accent">ship.</span></span>
+        <span class="hl-line" style="display:block;" data-pt="Eu integro LLMs em">I wire LLMs into</span>
+        <span class="hl-line" style="display:block;" data-pt="sistemas de produção">production systems</span>
+        <span class="hl-line" style="display:block;"><span data-pt="que vão ao ">that </span><span class="accent" data-pt="ar.">ship.</span></span>
       </h1>
-      <p class="lead" style="margin-top:24px;max-width:600px;">
-        AI-native operator and automation builder. Founder of <span class="txt" style="font-weight:500;">Labs Aero</span>, a suite of AI tools for the miles industry. I scope, build, deploy and measure. Solo.
-      </p>
+      <p class="lead" style="margin-top:24px;max-width:600px;"><span data-pt="Operador AI-native e construtor de automações. Fundador da ">AI-native operator and automation builder. Founder of </span><span class="txt" style="font-weight:500;">Labs Aero</span><span data-pt=", um conjunto de ferramentas de IA para o mercado de milhas. Eu planejo, construo, faço deploy e meço. Sozinho.">, a suite of AI tools for the miles industry. I scope, build, deploy and measure. Solo.</span></p>
       <div style="margin-top:32px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
-        <a href="#work" class="btn-solid">View work
+        <a href="#work" class="btn-solid"><span data-pt="Ver projetos">View work</span>
           <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
         </a>
-        <a href="#contact" class="ghost-btn" style="padding:11px 20px;font-size:14px;">Get in touch</a>
+        <a href="#contact" class="ghost-btn" style="padding:11px 20px;font-size:14px;" data-pt="Falar comigo">Get in touch</a>
         <span style="width:1px;height:20px;background:var(--border-strong);"></span>
         <a href="https://www.linkedin.com/in/gabrielbelcastro" target="_blank" rel="noopener" class="mono u-grow" style="font-size:12px;color:var(--text-2);">LinkedIn</a>
         <a href="https://github.com/gabrielbelcastro" target="_blank" rel="noopener" class="mono u-grow" style="font-size:12px;color:var(--text-2);">GitHub</a>
       </div>
       <div class="stats reveal" style="margin-top:80px;">
-        <div class="cell"><div class="metric-num count" data-target="789" data-suffix="">0</div><div class="eyebrow" style="margin-top:8px;">Commits shipped</div></div>
-        <div class="cell"><div class="metric-num count" data-target="11" data-suffix="">0</div><div class="eyebrow" style="margin-top:8px;">Repos built</div></div>
-        <div class="cell"><div class="metric-num count" data-target="50" data-prefix="~" data-suffix="%">0</div><div class="eyebrow" style="margin-top:8px;">Time saved w/ AI</div></div>
-        <div class="cell"><div class="metric-num count" data-target="600" data-suffix="+">0</div><div class="eyebrow" style="margin-top:8px;">Tickets / month</div></div>
+        <div class="cell"><div class="metric-num count" data-target="789" data-suffix="">0</div><div class="eyebrow" style="margin-top:8px;" data-pt="Commits enviados">Commits shipped</div></div>
+        <div class="cell"><div class="metric-num count" data-target="11" data-suffix="">0</div><div class="eyebrow" style="margin-top:8px;" data-pt="Repositórios">Repos built</div></div>
+        <div class="cell"><div class="metric-num count" data-target="50" data-prefix="~" data-suffix="%">0</div><div class="eyebrow" style="margin-top:8px;" data-pt="Tempo economizado c/ IA">Time saved w/ AI</div></div>
+        <div class="cell"><div class="metric-num count" data-target="600" data-suffix="+">0</div><div class="eyebrow" style="margin-top:8px;" data-pt="Emissões / mês">Tickets / month</div></div>
       </div>
     </div>
   </header>
@@ -275,42 +269,41 @@
   <!-- WORK -->
   <section id="work" class="sec">
     <div class="container">
-      <div class="sec-head reveal"><span class="eyebrow">SELECTED WORK</span><span class="micro">FEATURED</span></div>
+      <div class="sec-head reveal"><span class="eyebrow" data-pt="TRABALHOS EM DESTAQUE">SELECTED WORK</span><span class="micro" data-pt="DESTAQUE">FEATURED</span></div>
       <div class="hairline" style="margin:14px 0 28px;"></div>
 
-      <!-- LABS AERO ecosystem -->
+      <!-- LABS AERO -->
       <a href="https://labsaero.com" target="_blank" rel="noopener" class="eco-card reveal" style="display:grid;margin-bottom:16px;">
         <div class="eco-media"><img src="screenshots/labsaero.jpg" alt="Labs Aero website" loading="lazy" /></div>
         <div class="eco-body">
           <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
-            <span class="micro"><span class="muted">ecosystem:</span> <span class="dot" style="display:inline-block;background:var(--accent);"></span> <span class="txt2">founder / solo</span></span>
+            <span class="micro"><span class="muted" data-pt="ecossistema:">ecosystem:</span> <span class="dot" style="display:inline-block;background:var(--accent);"></span> <span class="txt2" data-pt="fundador / solo">founder / solo</span></span>
             <span class="micro">labsaero.com ↗</span>
           </div>
           <h3 class="h2" style="font-size:30px;">Labs Aero <span class="arrow">↗</span></h3>
-          <p class="body" style="margin:10px 0 18px;max-width:46ch;">My own product suite: AI tooling built for people who operate airline miles seriously. Site, newsletter, waitlist and five products under one brand. <span class="txt">Inteligência aplicada a milhas.</span></p>
+          <p class="body" style="margin:10px 0 18px;max-width:46ch;"><span data-pt="Meu próprio conjunto de produtos: ferramentas de IA para quem opera milhas a sério. Site, newsletter, lista de espera e cinco produtos sob uma só marca. ">My own product suite: AI tooling built for people who operate airline miles seriously. Site, newsletter, waitlist and five products under one brand. </span><span class="txt">Inteligência aplicada a milhas.</span></p>
           <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
             <span class="chip">Site</span>
-            <span class="chip">Ferramentas</span>
+            <span class="chip" data-pt="Ferramentas">Tools</span>
             <span class="chip">Newsletter</span>
             <span class="chip" data-social="instagram">Instagram</span>
             <span class="chip" data-social="facebook">Facebook</span>
           </div>
           <div style="margin-top:auto;">
             <div class="prod-row"><span class="dot" style="background:var(--accent);"></span><span class="mono" style="font-size:12px;color:var(--text);">Miles Terminal</span><span class="micro" style="margin-left:auto;">web app</span></div>
-            <div class="prod-row"><span class="dot" style="background:var(--azul);"></span><span class="mono" style="font-size:12px;color:var(--text);">Capturador Azul</span><span class="micro" style="margin-left:auto;">chrome ext</span></div>
+            <div class="prod-row"><span class="dot" style="background:var(--azul);"></span><span class="mono" style="font-size:12px;color:var(--text);">Capturador Azul</span><span class="micro" style="margin-left:auto;" data-pt="extensão">chrome ext</span></div>
             <div class="prod-row"><span class="dot" style="background:var(--accent);"></span><span class="mono" style="font-size:12px;color:var(--text);">Capturador Smiles</span><span class="micro" style="margin-left:auto;">ext + SaaS</span></div>
             <div class="prod-row"><span class="dot" style="background:var(--cat-app);"></span><span class="mono" style="font-size:12px;color:var(--text);">Transcrevedor de Documentos</span><span class="micro" style="margin-left:auto;">claude vision</span></div>
           </div>
         </div>
       </a>
 
-      <!-- 2-up featured -->
       <div class="feat-grid">
         <!-- Miles Terminal -->
         <article class="feat-card reveal">
           <span class="ghost-index">01</span>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;">
-            <span class="micro"><span class="muted">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ai/automation</span></span>
+            <span class="micro"><span class="muted" data-pt="tipo:">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ai/automation</span></span>
             <span class="micro">[ labs aero ]</span>
           </div>
           <div class="media-well" data-mock="miles">
@@ -335,24 +328,24 @@
             </div>
           </div>
           <div style="padding:16px 20px 0;"><h3 class="h3">Miles Terminal</h3></div>
-          <p class="body desc-clamp" style="padding:8px 20px 0;">Multi-carrier command center in production. Dual backend, stealth browser, a 3-layer OCR pipeline ending in Claude Vision, and a client-side performance dashboard.</p>
+          <p class="body desc-clamp" style="padding:8px 20px 0;" data-pt="Central multi-companhia em produção. Backend duplo, navegador stealth, pipeline de OCR em 3 camadas terminando no Claude Vision, e dashboard de desempenho client-side.">Multi-carrier command center in production. Dual backend, stealth browser, a 3-layer OCR pipeline ending in Claude Vision, and a client-side performance dashboard.</p>
           <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;">3-LAYER OCR · <span class="accent">LEVENSHTEIN</span> IATA · pm2 :3001</div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px 18px;gap:12px;">
             <span class="micro">Node.js · Puppeteer · Claude Vision · OCR</span>
-            <span class="micro" style="display:inline-flex;align-items:center;gap:6px;"><span class="dot dot-success"></span>production</span>
+            <span class="micro" style="display:inline-flex;align-items:center;gap:6px;"><span class="dot dot-success"></span><span data-pt="produção">production</span></span>
           </div>
         </article>
 
-        <!-- Capturador Smiles (real landing) -->
+        <!-- Capturador Smiles -->
         <a class="feat-card reveal" href="https://capturador-smiles.labsaero.com" target="_blank" rel="noopener" style="display:block;">
           <span class="ghost-index">02</span>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;">
-            <span class="micro"><span class="muted">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ext + SaaS</span></span>
+            <span class="micro"><span class="muted" data-pt="tipo:">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ext + SaaS</span></span>
             <span class="micro">[ labs aero ]</span>
           </div>
           <div class="media-well"><img src="screenshots/capturador-smiles-landing.jpg" alt="Capturador Smiles landing page" loading="lazy" /></div>
           <div style="padding:16px 20px 0;"><h3 class="h3">Capturador Smiles <span class="arrow">↗</span></h3></div>
-          <p class="body desc-clamp" style="padding:8px 20px 0;">Chrome extension + Python backend turned SaaS. Supabase auth, Stripe billing, AES-GCM vault from a single login, Twilio Verify and Resend edge functions.</p>
+          <p class="body desc-clamp" style="padding:8px 20px 0;" data-pt="Extensão Chrome + backend Python que virou SaaS. Auth Supabase, cobrança Stripe, cofre AES-GCM a partir de um único login, Twilio Verify e edge functions Resend.">Chrome extension + Python backend turned SaaS. Supabase auth, Stripe billing, AES-GCM vault from a single login, Twilio Verify and Resend edge functions.</p>
           <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;"><span class="accent">438 COMMITS</span> · AES-GCM VAULT · R$ 18,99/mo</div>
           <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px 18px;gap:12px;">
             <span class="micro">Supabase · Stripe · Twilio · Resend</span>
@@ -363,15 +356,15 @@
     </div>
   </section>
 
-  <!-- GALLERY: extensions + n8n mockups -->
+  <!-- GALLERY -->
   <section class="sec">
     <div class="container">
-      <div class="sec-head reveal"><span class="eyebrow">UNDER THE HOOD · EXTENSIONS &amp; PIPELINES</span><span class="micro">MOCKUPS</span></div>
+      <div class="sec-head reveal"><span class="eyebrow" data-pt="POR DENTRO · EXTENSÕES E PIPELINES">UNDER THE HOOD · EXTENSIONS &amp; PIPELINES</span><span class="micro">MOCKUPS</span></div>
       <div class="hairline" style="margin:14px 0 12px;"></div>
-      <p class="body reveal" style="max-width:60ch;margin-bottom:24px;">Representative UI of the Chrome extensions and the n8n automation flows. Stylized from the real products.</p>
+      <p class="body reveal" style="max-width:60ch;margin-bottom:24px;" data-pt="Interface representativa das extensões Chrome e dos fluxos de automação n8n. Estilizadas a partir dos produtos reais.">Representative UI of the Chrome extensions and the n8n automation flows. Stylized from the real products.</p>
 
       <div class="gallery">
-        <!-- Capturador Smiles extension popup -->
+        <!-- Capturador Smiles ext -->
         <div class="gcard reveal">
           <div class="gframe" data-mock="capt">
             <div class="mock" aria-hidden="true">
@@ -388,12 +381,12 @@
             </div>
           </div>
           <div style="padding:14px 16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;">Capturador Smiles · extension</h3><span class="micro" style="color:var(--cat-ai);">●</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;" data-pt="Capturador Smiles · extensão">Capturador Smiles · extension</h3><span class="micro" style="color:var(--cat-ai);">●</span></div>
             <p class="micro" style="margin-top:6px;">MV3 · Supabase · AES-GCM · Stripe</p>
           </div>
         </div>
 
-        <!-- Capturador Azul extension popup -->
+        <!-- Capturador Azul ext -->
         <div class="gcard reveal">
           <div class="gframe" data-mock="azul">
             <div class="mock" aria-hidden="true">
@@ -410,12 +403,12 @@
             </div>
           </div>
           <div style="padding:14px 16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;">Capturador Azul · extension</h3><span class="micro" style="color:var(--cat-bot);">●</span></div>
-            <p class="micro" style="margin-top:6px;">MV3 · no backend · TudoAzul P+D</p>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;" data-pt="Capturador Azul · extensão">Capturador Azul · extension</h3><span class="micro" style="color:var(--cat-bot);">●</span></div>
+            <p class="micro" style="margin-top:6px;" data-pt="MV3 · sem backend · TudoAzul P+D">MV3 · no backend · TudoAzul P+D</p>
           </div>
         </div>
 
-        <!-- n8n flow -->
+        <!-- n8n -->
         <div class="gcard reveal">
           <div class="gframe" data-mock="n8n">
             <div class="n8n" aria-hidden="true">
@@ -428,7 +421,7 @@
             </div>
           </div>
           <div style="padding:14px 16px;">
-            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;">n8n autopost flow</h3><span class="micro" style="color:var(--cat-ai);">●</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;" data-pt="fluxo n8n de postagem">n8n autopost flow</h3><span class="micro" style="color:var(--cat-ai);">●</span></div>
             <p class="micro" style="margin-top:6px;">n8n · DeepSeek · Meta API · YouTube</p>
           </div>
         </div>
@@ -436,13 +429,13 @@
     </div>
   </section>
 
-  <!-- OTHER PROJECTS -->
+  <!-- OTHER -->
   <section class="sec">
     <div class="container">
-      <div class="sec-head reveal"><span class="eyebrow">MORE · TOOLS, EXTENSIONS &amp; CLIENT SITES</span><span class="micro" id="moreCount">15+ SHIPPED</span></div>
+      <div class="sec-head reveal"><span class="eyebrow" data-pt="MAIS · FERRAMENTAS, EXTENSÕES E SITES">MORE · TOOLS, EXTENSIONS &amp; CLIENT SITES</span><span class="micro" data-pt="15+ ENTREGUES">15+ SHIPPED</span></div>
       <div class="hairline" style="margin:14px 0 20px;"></div>
       <div class="reveal" style="display:flex;gap:8px;margin-bottom:18px;overflow-x:auto;padding-bottom:2px;">
-        <button class="ftab active" data-filter="all">ALL</button>
+        <button class="ftab active" data-filter="all" data-pt="TODOS">ALL</button>
         <button class="ftab" data-filter="ai">AI</button>
         <button class="ftab" data-filter="ext">EXT</button>
         <button class="ftab" data-filter="web">WEB</button>
@@ -450,21 +443,21 @@
         <button class="ftab" data-filter="app">APP</button>
       </div>
       <div class="ledger reveal" id="ledger">
-        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">01·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Miles Terminal Free</span><span class="body col-desc">Self-hosted edition · LATAM cookie-pairing</span><span class="micro col-stack">Node.js · OCR</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
-        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">02·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Sistema Criação de Contas</span><span class="body col-desc">Multi-agent signup · 5-layer anti-bot stealth</span><span class="micro col-stack">Playwright · Docker · ghost-cursor</span><span class="micro" style="text-align:right;">OPERATIONAL</span></div>
-        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">03·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">WhatsApp Milhas</span><span class="body col-desc">Photos → Claude Vision → Sheets · Docker Swarm</span><span class="micro col-stack">WAHA · Flask · Claude Vision</span><span class="micro" style="text-align:right;">PRODUCTION</span></div>
-        <div class="ledger-row ledger-grid" data-cat="ext"><span class="micro col-idx">04·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v3a2 2 0 1 0 4 0V3h4v4h-3a2 2 0 1 0 0 4h3v4h-4v-3a2 2 0 1 0-4 0v3H6v-4h3a2 2 0 1 0 0-4H6V3z"/></svg> <span class="micro">EXT</span></span><span class="txt" style="font-size:14px;">Transcrevedor de Documentos</span><span class="body col-desc">RG/CNH/passaporte via Claude Vision</span><span class="micro col-stack">Chrome MV3 · Claude Vision</span><span class="micro" style="text-align:right;">v1.0</span></div>
-        <div class="ledger-row ledger-grid" data-cat="ext"><span class="micro col-idx">05·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v3a2 2 0 1 0 4 0V3h4v4h-3a2 2 0 1 0 0 4h3v4h-4v-3a2 2 0 1 0-4 0v3H6v-4h3a2 2 0 1 0 0-4H6V3z"/></svg> <span class="micro">EXT</span></span><span class="txt" style="font-size:14px;">LATAM Oferta Copier</span><span class="body col-desc">Captures LATAM offers → WhatsApp via WAHA</span><span class="micro col-stack">Chrome MV3 · WAHA</span><span class="micro" style="text-align:right;">v1.4</span></div>
-        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">06·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Telegram Seller Bot</span><span class="body col-desc">Monitors Telegram group · auto-sells miles</span><span class="micro col-stack">Python · Telethon</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
-        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">07·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Emissão Azul</span><span class="body col-desc">Automated Azul ticketing · GUI + OCR</span><span class="micro col-stack">Python · Selenium · CustomTkinter</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
-        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">08·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Flytrack Monitor</span><span class="body col-desc">Real-time order alerts on Flytrack panel</span><span class="micro col-stack">Node · Puppeteer · Socket.io</span><span class="micro" style="text-align:right;">PRODUCTION</span></div>
-        <a class="ledger-row ledger-grid" data-cat="web" href="https://turistae.com.br" target="_blank" rel="noopener"><span class="micro col-idx">09·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Turistaê</span><span class="body col-desc">Travel agency landing · static / Hostinger</span><span class="micro col-stack">React → static</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>turistae ↗</span></a>
-        <a class="ledger-row ledger-grid" data-cat="web" href="https://viajagencia.com.br" target="_blank" rel="noopener"><span class="micro col-idx">10·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Viajá Turismo</span><span class="body col-desc">Travel agency landing · WhatsApp quote form</span><span class="micro col-stack">React 19 · Tailwind</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>viajagencia ↗</span></a>
-        <a class="ledger-row ledger-grid" data-cat="web" href="https://rendaaerea.com.br" target="_blank" rel="noopener"><span class="micro col-idx">11·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Renda Aérea</span><span class="body col-desc">Passive-income-with-miles landing · Gemini API</span><span class="micro col-stack">React 19 · Vite · Gemini</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>rendaaerea ↗</span></a>
-        <a class="ledger-row ledger-grid" data-cat="web" href="https://houseacessoriosmcz.com.br" target="_blank" rel="noopener"><span class="micro col-idx">12·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Apple House</span><span class="body col-desc">Apple store SPA · catalogue + trade-in</span><span class="micro col-stack">React 19 · TS · Router</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>houseacessorios ↗</span></a>
-        <div class="ledger-row ledger-grid" data-cat="app"><span class="micro col-idx">13·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg> <span class="micro">APP</span></span><span class="txt" style="font-size:14px;">Barbearia Booking</span><span class="body col-desc">Appointment SPA · availability calendar</span><span class="micro col-stack">React · Vite · Router</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
-        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">14·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Lançamentos Investimentos</span><span class="body col-desc">WhatsApp bot · auto-logs statements to Sheets</span><span class="micro col-stack">whatsapp-web.js · Gemini</span><span class="micro" style="text-align:right;">PRODUCTION</span></div>
-        <div class="ledger-row ledger-grid" data-cat="app"><span class="micro col-idx">15·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg> <span class="micro">APP</span></span><span class="txt" style="font-size:14px;">Ofertas MCZ</span><span class="body col-desc">Daily miles-deal report from Maceió · PDF</span><span class="micro col-stack">Python · ReportLab</span><span class="micro" style="text-align:right;">DAILY</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">01·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Miles Terminal Free</span><span class="body col-desc" data-pt="Edição self-hosted · cookie-pairing LATAM">Self-hosted edition · LATAM cookie-pairing</span><span class="micro col-stack">Node.js · OCR</span><span class="micro" style="text-align:right;" data-pt="INTERNO">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">02·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Sistema Criação de Contas</span><span class="body col-desc" data-pt="Cadastro multi-agente · stealth anti-bot em 5 camadas">Multi-agent signup · 5-layer anti-bot stealth</span><span class="micro col-stack">Playwright · Docker · ghost-cursor</span><span class="micro" style="text-align:right;" data-pt="OPERACIONAL">OPERATIONAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">03·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">WhatsApp Milhas</span><span class="body col-desc" data-pt="Fotos → Claude Vision → Sheets · Docker Swarm">Photos → Claude Vision → Sheets · Docker Swarm</span><span class="micro col-stack">WAHA · Flask · Claude Vision</span><span class="micro" style="text-align:right;" data-pt="PRODUÇÃO">PRODUCTION</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ext"><span class="micro col-idx">04·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v3a2 2 0 1 0 4 0V3h4v4h-3a2 2 0 1 0 0 4h3v4h-4v-3a2 2 0 1 0-4 0v3H6v-4h3a2 2 0 1 0 0-4H6V3z"/></svg> <span class="micro">EXT</span></span><span class="txt" style="font-size:14px;">Transcrevedor de Documentos</span><span class="body col-desc">RG/CNH/passaporte · Claude Vision</span><span class="micro col-stack">Chrome MV3 · Claude Vision</span><span class="micro" style="text-align:right;">v1.0</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ext"><span class="micro col-idx">05·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v3a2 2 0 1 0 4 0V3h4v4h-3a2 2 0 1 0 0 4h3v4h-4v-3a2 2 0 1 0-4 0v3H6v-4h3a2 2 0 1 0 0-4H6V3z"/></svg> <span class="micro">EXT</span></span><span class="txt" style="font-size:14px;">LATAM Oferta Copier</span><span class="body col-desc" data-pt="Captura ofertas LATAM → WhatsApp via WAHA">Captures LATAM offers → WhatsApp via WAHA</span><span class="micro col-stack">Chrome MV3 · WAHA</span><span class="micro" style="text-align:right;">v1.4</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">06·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Telegram Seller Bot</span><span class="body col-desc" data-pt="Monitora grupo no Telegram · vende milhas">Monitors Telegram group · auto-sells miles</span><span class="micro col-stack">Python · Telethon</span><span class="micro" style="text-align:right;" data-pt="INTERNO">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">07·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Emissão Azul</span><span class="body col-desc" data-pt="Emissão Azul automatizada · GUI + OCR">Automated Azul ticketing · GUI + OCR</span><span class="micro col-stack">Python · Selenium · CustomTkinter</span><span class="micro" style="text-align:right;" data-pt="INTERNO">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">08·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Flytrack Monitor</span><span class="body col-desc" data-pt="Alertas de pedidos em tempo real no painel Flytrack">Real-time order alerts on Flytrack panel</span><span class="micro col-stack">Node · Puppeteer · Socket.io</span><span class="micro" style="text-align:right;" data-pt="PRODUÇÃO">PRODUCTION</span></div>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://turistae.com.br" target="_blank" rel="noopener"><span class="micro col-idx">09·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Turistaê</span><span class="body col-desc" data-pt="Landing de agência de viagens · estático / Hostinger">Travel agency landing · static / Hostinger</span><span class="micro col-stack" data-pt="React → estático">React → static</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>turistae ↗</span></a>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://viajagencia.com.br" target="_blank" rel="noopener"><span class="micro col-idx">10·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Viajá Turismo</span><span class="body col-desc" data-pt="Landing de agência · formulário de cotação WhatsApp">Travel agency landing · WhatsApp quote form</span><span class="micro col-stack">React 19 · Tailwind</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>viajagencia ↗</span></a>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://rendaaerea.com.br" target="_blank" rel="noopener"><span class="micro col-idx">11·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Renda Aérea</span><span class="body col-desc" data-pt="Landing de renda passiva com milhas · Gemini API">Passive-income-with-miles landing · Gemini API</span><span class="micro col-stack">React 19 · Vite · Gemini</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>rendaaerea ↗</span></a>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://houseacessoriosmcz.com.br" target="_blank" rel="noopener"><span class="micro col-idx">12·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Apple House</span><span class="body col-desc" data-pt="SPA de loja Apple · catálogo + trade-in">Apple store SPA · catalogue + trade-in</span><span class="micro col-stack">React 19 · TS · Router</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>houseacessorios ↗</span></a>
+        <div class="ledger-row ledger-grid" data-cat="app"><span class="micro col-idx">13·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg> <span class="micro">APP</span></span><span class="txt" style="font-size:14px;">Barbearia Booking</span><span class="body col-desc" data-pt="SPA de agendamento · calendário de disponibilidade">Appointment SPA · availability calendar</span><span class="micro col-stack">React · Vite · Router</span><span class="micro" style="text-align:right;" data-pt="INTERNO">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">14·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Lançamentos Investimentos</span><span class="body col-desc" data-pt="Bot WhatsApp · lança extratos no Sheets">WhatsApp bot · auto-logs statements to Sheets</span><span class="micro col-stack">whatsapp-web.js · Gemini</span><span class="micro" style="text-align:right;" data-pt="PRODUÇÃO">PRODUCTION</span></div>
+        <div class="ledger-row ledger-grid" data-cat="app"><span class="micro col-idx">15·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg> <span class="micro">APP</span></span><span class="txt" style="font-size:14px;">Ofertas MCZ</span><span class="body col-desc" data-pt="Relatório diário de ofertas de milhas de Maceió · PDF">Daily miles-deal report from Maceió · PDF</span><span class="micro col-stack">Python · ReportLab</span><span class="micro" style="text-align:right;" data-pt="DIÁRIO">DAILY</span></div>
       </div>
     </div>
   </section>
@@ -472,20 +465,19 @@
   <!-- DATA -->
   <section id="data" class="sec">
     <div class="container">
-      <div class="sec-head reveal"><span class="eyebrow">BY THE NUMBERS</span><span class="micro">LIVE FROM GITHUB · 2026</span></div>
+      <div class="sec-head reveal"><span class="eyebrow" data-pt="EM NÚMEROS">BY THE NUMBERS</span><span class="micro" data-pt="DIRETO DO GITHUB · 2026">LIVE FROM GITHUB · 2026</span></div>
       <div class="hairline" style="margin:14px 0 28px;"></div>
 
       <div class="bigstat reveal" style="margin-bottom:16px;">
-        <div class="cell"><div class="metric-num count" data-target="789">0</div><div class="eyebrow" style="margin-top:8px;">Total commits</div></div>
-        <div class="cell"><div class="metric-num count" data-target="11">0</div><div class="eyebrow" style="margin-top:8px;">Active repos</div></div>
-        <div class="cell"><div class="metric-num count" data-target="4">0</div><div class="eyebrow" style="margin-top:8px;">Months</div></div>
-        <div class="cell"><div class="metric-num"><span class="count" data-target="197">0</span></div><div class="eyebrow" style="margin-top:8px;">Commits / month avg</div></div>
+        <div class="cell"><div class="metric-num count" data-target="789">0</div><div class="eyebrow" style="margin-top:8px;" data-pt="Commits totais">Total commits</div></div>
+        <div class="cell"><div class="metric-num count" data-target="11">0</div><div class="eyebrow" style="margin-top:8px;" data-pt="Repositórios ativos">Active repos</div></div>
+        <div class="cell"><div class="metric-num count" data-target="4">0</div><div class="eyebrow" style="margin-top:8px;" data-pt="Meses">Months</div></div>
+        <div class="cell"><div class="metric-num"><span class="count" data-target="197">0</span></div><div class="eyebrow" style="margin-top:8px;" data-pt="Média de commits / mês">Commits / month avg</div></div>
       </div>
 
       <div class="data-grid">
-        <!-- monthly activity -->
         <div class="panel reveal">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow">COMMIT ACTIVITY</span><span class="micro">mar–jun 2026</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow" data-pt="ATIVIDADE DE COMMITS">COMMIT ACTIVITY</span><span class="micro">mar–jun 2026</span></div>
           <div class="month-bars" id="monthBars">
             <div class="mbar"><div class="col" data-h="16" style="height:16%;"></div><span class="micro">62</span><span class="micro faint">MAR</span></div>
             <div class="mbar"><div class="col" data-h="78" style="height:78%;"></div><span class="micro">302</span><span class="micro faint">APR</span></div>
@@ -494,21 +486,19 @@
           </div>
         </div>
 
-        <!-- languages -->
         <div class="panel reveal">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow">LANGUAGES</span><span class="micro">by commits</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow" data-pt="LINGUAGENS">LANGUAGES</span><span class="micro" data-pt="por commits">by commits</span></div>
           <div class="drow"><span class="micro txt2">JavaScript</span><div class="dtrack"><span class="dfill acc" data-w="100"></span></div><span class="micro" style="text-align:right;">532</span></div>
           <div class="drow"><span class="micro txt2">HTML/CSS</span><div class="dtrack"><span class="dfill" data-w="37"></span></div><span class="micro" style="text-align:right;">196</span></div>
           <div class="drow"><span class="micro txt2">Python</span><div class="dtrack"><span class="dfill" data-w="11"></span></div><span class="micro" style="text-align:right;">61</span></div>
           <div style="border-top:1px solid var(--border);margin-top:14px;padding-top:14px;">
-            <span class="eyebrow">ALSO</span>
+            <span class="eyebrow" data-pt="TAMBÉM">ALSO</span>
             <p class="micro" style="margin-top:8px;line-height:1.8;">TypeScript · React · Node.js · Express · Flask · Bash · SQL</p>
           </div>
         </div>
 
-        <!-- commits per project -->
         <div class="panel reveal" style="grid-column:1 / -1;">
-          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow">COMMITS PER PROJECT</span><span class="micro">top repos · private</span></div>
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow" data-pt="COMMITS POR PROJETO">COMMITS PER PROJECT</span><span class="micro" data-pt="principais repos · privados">top repos · private</span></div>
           <div class="drow"><span class="micro txt2">Capturador Smiles</span><div class="dtrack"><span class="dfill acc" data-w="100"></span></div><span class="micro" style="text-align:right;">438</span></div>
           <div class="drow"><span class="micro txt2">Miles Terminal Free</span><div class="dtrack"><span class="dfill" data-w="32"></span></div><span class="micro" style="text-align:right;">140</span></div>
           <div class="drow"><span class="micro txt2">Capturador (free)</span><div class="dtrack"><span class="dfill" data-w="18"></span></div><span class="micro" style="text-align:right;">80</span></div>
@@ -517,10 +507,9 @@
           <div class="drow"><span class="micro txt2">Transcrevedor de Docs</span><div class="dtrack"><span class="dfill" data-w="3"></span></div><span class="micro" style="text-align:right;">12</span></div>
         </div>
 
-        <!-- built with -->
         <div class="panel reveal">
-          <span class="eyebrow">BUILT WITH</span>
-          <p class="micro" style="margin:6px 0 16px;color:var(--text-faint);">Services, infra &amp; AI used across the projects</p>
+          <span class="eyebrow" data-pt="CONSTRUÍDO COM">BUILT WITH</span>
+          <p class="micro" style="margin:6px 0 16px;color:var(--text-faint);" data-pt="Serviços, infra e IA usados nos projetos">Services, infra &amp; AI used across the projects</p>
           <div class="tag-cloud">
             <span class="tag hi">Claude (Anthropic)</span><span class="tag hi">Claude Vision</span><span class="tag">DeepSeek</span><span class="tag">Gemini API</span>
             <span class="tag">n8n</span><span class="tag">Playwright</span><span class="tag">Puppeteer</span><span class="tag">ghost-cursor</span>
@@ -530,54 +519,53 @@
           </div>
         </div>
 
-        <!-- how it's built: MCPs + skills -->
         <div class="panel reveal">
-          <span class="eyebrow">HOW IT'S BUILT · MCPs &amp; SKILLS</span>
-          <p class="micro" style="margin:6px 0 16px;color:var(--text-faint);">AI tooling &amp; engineering capabilities used to ship</p>
+          <span class="eyebrow" data-pt="COMO FOI CONSTRUÍDO · MCPs E SKILLS">HOW IT'S BUILT · MCPs &amp; SKILLS</span>
+          <p class="micro" style="margin:6px 0 16px;color:var(--text-faint);" data-pt="Ferramentas de IA e capacidades de engenharia usadas para entregar">AI tooling &amp; engineering capabilities used to ship</p>
           <div class="tag-cloud" style="margin-bottom:14px;">
             <span class="tag hi">Claude Code</span><span class="tag">Playwright MCP</span><span class="tag">Chrome MCP</span><span class="tag">Hostinger MCP</span><span class="tag">n8n MCP</span><span class="tag">Supabase MCP</span><span class="tag">GitHub (gh)</span>
           </div>
           <div style="border-top:1px solid var(--border);padding-top:14px;">
             <div class="tag-cloud">
-              <span class="tag">Stealth automation</span><span class="tag">Human-behavior sim</span><span class="tag">2FA automation</span><span class="tag">AES-GCM crypto</span><span class="tag">Anti-bot evasion</span><span class="tag">OCR pipelines</span><span class="tag">LLM integration</span><span class="tag">Autonomous pipelines</span><span class="tag">Multi-carrier integration</span>
+              <span class="tag" data-pt="Automação stealth">Stealth automation</span><span class="tag" data-pt="Simulação humana">Human-behavior sim</span><span class="tag" data-pt="Automação 2FA">2FA automation</span><span class="tag">AES-GCM crypto</span><span class="tag" data-pt="Evasão anti-bot">Anti-bot evasion</span><span class="tag" data-pt="Pipelines de OCR">OCR pipelines</span><span class="tag" data-pt="Integração de LLM">LLM integration</span><span class="tag" data-pt="Pipelines autônomas">Autonomous pipelines</span><span class="tag" data-pt="Integração multi-companhia">Multi-carrier integration</span>
             </div>
           </div>
         </div>
       </div>
-      <p class="micro" style="margin-top:14px;color:var(--text-faint);">Commit figures aggregated from 11 private GitHub repositories via the GitHub API, Mar–Jun 2026.</p>
+      <p class="micro" style="margin-top:14px;color:var(--text-faint);" data-pt="Números de commits agregados de 11 repositórios privados no GitHub via API, mar–jun 2026.">Commit figures aggregated from 11 private GitHub repositories via the GitHub API, Mar–Jun 2026.</p>
     </div>
   </section>
 
   <!-- ABOUT -->
   <section id="about" class="sec">
     <div class="container">
-      <div class="sec-head reveal"><span class="eyebrow">ABOUT</span></div>
+      <div class="sec-head reveal"><span class="eyebrow" data-pt="SOBRE">ABOUT</span></div>
       <div class="hairline" style="margin:14px 0 40px;"></div>
       <div style="display:grid;grid-template-columns:38% 1fr;gap:64px;align-items:start;" class="about-grid">
         <div class="reveal">
-          <h2 class="h2" style="margin-bottom:28px;">A builder, not just a user of AI.</h2>
+          <h2 class="h2" style="margin-bottom:28px;" data-pt="Um construtor, não apenas um usuário de IA.">A builder, not just a user of AI.</h2>
           <div style="margin-bottom:28px;">
-            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">ROLE</span><span class="txt" style="font-size:12px;text-align:right;">Senior emissor · founder, Labs Aero</span></div>
-            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">BASED</span><span class="txt" style="font-size:12px;">Rio de Janeiro, BR</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;" data-pt="FUNÇÃO">ROLE</span><span class="txt" style="font-size:12px;text-align:right;" data-pt="Emissor sênior · fundador, Labs Aero">Senior emissor · founder, Labs Aero</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;" data-pt="LOCAL">BASED</span><span class="txt" style="font-size:12px;">Rio de Janeiro, BR</span></div>
             <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">STACK</span><span class="txt" style="font-size:12px;text-align:right;">Node · Python · n8n · Claude · React</span></div>
-            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">OPEN TO</span><span class="txt" style="font-size:12px;">Remote roles &amp; freelance</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;" data-pt="ABERTO A">OPEN TO</span><span class="txt" style="font-size:12px;" data-pt="Vagas remotas e freelance">Remote roles &amp; freelance</span></div>
           </div>
-          <div class="micro" style="margin-bottom:12px;">HOW I OPERATE · ONE-PERSON LOOP</div>
+          <div class="micro" style="margin-bottom:12px;" data-pt="COMO EU OPERO · CICLO DE UMA PESSOA">HOW I OPERATE · ONE-PERSON LOOP</div>
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
-            <span class="chip"><span class="dot" style="background:var(--accent);"></span>SCOPE</span><span class="muted mono" style="font-size:12px;">→</span>
-            <span class="chip"><span class="dot" style="background:var(--accent);"></span>BUILD</span><span class="muted mono" style="font-size:12px;">→</span>
+            <span class="chip"><span class="dot" style="background:var(--accent);"></span><span data-pt="PLANEJAR">SCOPE</span></span><span class="muted mono" style="font-size:12px;">→</span>
+            <span class="chip"><span class="dot" style="background:var(--accent);"></span><span data-pt="CONSTRUIR">BUILD</span></span><span class="muted mono" style="font-size:12px;">→</span>
             <span class="chip"><span class="dot" style="background:var(--accent);"></span>DEPLOY</span><span class="muted mono" style="font-size:12px;">→</span>
-            <span class="chip"><span class="dot" style="background:var(--accent);"></span>MEASURE</span>
+            <span class="chip"><span class="dot" style="background:var(--accent);"></span><span data-pt="MEDIR">MEASURE</span></span>
           </div>
         </div>
         <div class="reveal">
-          <p class="lead" style="margin:0 0 18px;max-width:560px;">I spent the last two years on a high-volume customer desk: <span class="txt" style="font-weight:500;">600 tickets a month</span>, critical cases, and onboarding for <span class="txt" style="font-weight:500;">~50 agents</span>. I know exactly where the time goes and which parts are repetitive enough for AI to own.</p>
-          <p class="lead" style="margin:0;max-width:560px;">So I started shipping. I embedded Claude into my daily workflow and cut handling time by <span class="txt" style="font-weight:500;">~50%</span>. Then I founded <span class="txt" style="font-weight:500;">Labs Aero</span> and shipped <span class="txt" style="font-weight:500;">789 commits across 11 repos</span> in four months: a multi-carrier dashboard, Chrome extensions, autonomous pipelines, and production websites for paying clients. I operate like a one-person company, and AI is my team.</p>
+          <p class="lead" style="margin:0 0 18px;max-width:560px;"><span data-pt="Passei os últimos dois anos numa operação de alto volume: ">I spent the last two years on a high-volume customer desk: </span><span class="txt" style="font-weight:500;" data-pt="600 emissões por mês">600 tickets a month</span><span data-pt=", casos críticos, e treinamento de ">, critical cases, and onboarding for </span><span class="txt" style="font-weight:500;" data-pt="~50 emissores">~50 agents</span><span data-pt=". Sei exatamente onde o tempo é gasto e quais partes são repetitivas o suficiente para a IA assumir.">. I know exactly where the time goes and which parts are repetitive enough for AI to own.</span></p>
+          <p class="lead" style="margin:0;max-width:560px;"><span data-pt="Então comecei a construir. Coloquei o Claude no meu fluxo diário e cortei o tempo de atendimento em ">So I started shipping. I embedded Claude into my daily workflow and cut handling time by </span><span class="txt" style="font-weight:500;">~50%</span><span data-pt=". Depois fundei a ">. Then I founded </span><span class="txt" style="font-weight:500;">Labs Aero</span><span data-pt=" e entreguei ">  and shipped </span><span class="txt" style="font-weight:500;" data-pt="789 commits em 11 repositórios">789 commits across 11 repos</span><span data-pt=" em quatro meses: um dashboard multi-companhia, extensões Chrome, pipelines autônomas e sites em produção para clientes. Opero como uma empresa de uma pessoa só, e a IA é meu time."> in four months: a multi-carrier dashboard, Chrome extensions, autonomous pipelines, and production websites for paying clients. I operate like a one-person company, and AI is my team.</span></p>
           <div class="hairline" style="margin:32px 0 24px;"></div>
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" class="caps-grid">
-            <div><div class="eyebrow" style="margin-bottom:6px;">AI SYSTEMS</div><div class="body">LLM pipelines, OCR, vision</div></div>
-            <div><div class="eyebrow" style="margin-bottom:6px;">AUTOMATION</div><div class="body">n8n, stealth browsers, 2FA</div></div>
-            <div><div class="eyebrow" style="margin-bottom:6px;">PRODUCT</div><div class="body">SaaS, billing, auth, web</div></div>
+            <div><div class="eyebrow" style="margin-bottom:6px;" data-pt="SISTEMAS DE IA">AI SYSTEMS</div><div class="body" data-pt="Pipelines LLM, OCR, visão">LLM pipelines, OCR, vision</div></div>
+            <div><div class="eyebrow" style="margin-bottom:6px;" data-pt="AUTOMAÇÃO">AUTOMATION</div><div class="body" data-pt="n8n, navegadores stealth, 2FA">n8n, stealth browsers, 2FA</div></div>
+            <div><div class="eyebrow" style="margin-bottom:6px;" data-pt="PRODUTO">PRODUCT</div><div class="body" data-pt="SaaS, cobrança, auth, web">SaaS, billing, auth, web</div></div>
           </div>
         </div>
       </div>
@@ -587,10 +575,10 @@
   <!-- CONTACT -->
   <section id="contact" class="sec" style="padding-bottom:0;">
     <div class="container">
-      <div class="sec-head reveal"><span class="eyebrow">CONTACT</span></div>
+      <div class="sec-head reveal"><span class="eyebrow" data-pt="CONTATO">CONTACT</span></div>
       <div class="hairline" style="margin:14px 0 32px;"></div>
-      <h2 class="h2 reveal">Let's <span class="accent">build</span> something.</h2>
-      <p class="lead reveal" style="margin:12px 0 32px;max-width:520px;">Open to remote roles, freelance, and genuinely hard problems.</p>
+      <h2 class="h2 reveal"><span data-pt="Vamos ">Let's </span><span class="accent" data-pt="construir">build</span><span data-pt=" algo."> something.</span></h2>
+      <p class="lead reveal" style="margin:12px 0 32px;max-width:520px;" data-pt="Aberto a vagas remotas, freelance e problemas genuinamente difíceis.">Open to remote roles, freelance, and genuinely hard problems.</p>
       <div class="contact-list reveal">
         <a class="contact-row" href="mailto:gabrielbelcastro.contatos@gmail.com">
           <span style="display:flex;align-items:center;gap:14px;"><span class="ci"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="eyebrow">EMAIL</span></span>
@@ -611,7 +599,7 @@
       </div>
       <button id="copyEmail" class="btn-solid" style="margin-top:24px;">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
-        <span id="copyLabel">Copy email</span>
+        <span id="copyLabel" data-pt="Copiar email">Copy email</span>
       </button>
     </div>
   </section>
@@ -620,8 +608,8 @@
   <footer style="margin-top:96px;border-top:1px solid var(--border);">
     <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:40px;padding-bottom:40px;flex-wrap:wrap;">
       <div style="display:flex;align-items:center;gap:12px;"><span class="monogram">GB</span><span class="micro">© 2026 Gabriel Belcastro</span></div>
-      <span class="micro faint">BUILT SOLO · ONE HTML FILE · NO FRAMEWORKS</span>
-      <a href="#top" class="micro u-grow">↑ Back to top</a>
+      <span class="micro faint" data-pt="FEITO SOLO · UM ARQUIVO HTML · SEM FRAMEWORKS">BUILT SOLO · ONE HTML FILE · NO FRAMEWORKS</span>
+      <a href="#top" class="micro u-grow" data-pt="↑ Voltar ao topo">↑ Back to top</a>
     </div>
   </footer>
 
@@ -632,6 +620,29 @@
   <noscript><style>.reveal{opacity:1;transform:none}.log-line{opacity:1}.dfill{transform:scaleX(1)!important}.mbar .col{transform:scaleY(1)!important}</style></noscript>
 
   <script>
+    // ---- i18n EN/PT (textContent only) ----
+    (function(){
+      var els = document.querySelectorAll('[data-pt]');
+      els.forEach(function(e){ e.setAttribute('data-en', e.textContent); });
+      var lang = localStorage.getItem('lang') || ((navigator.language||'en').toLowerCase().indexOf('pt')===0 ? 'pt' : 'en');
+      window.__lang = lang;
+      function apply(l){
+        window.__lang = l;
+        els.forEach(function(e){ e.textContent = (l==='pt') ? e.getAttribute('data-pt') : e.getAttribute('data-en'); });
+        document.documentElement.lang = (l==='pt') ? 'pt-BR' : 'en';
+        document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+          var en=b.querySelector('.l-en'), pt=b.querySelector('.l-pt');
+          if(en){ en.style.color = (l==='en') ? 'var(--accent)' : 'var(--text-muted)'; }
+          if(pt){ pt.style.color = (l==='pt') ? 'var(--accent)' : 'var(--text-muted)'; }
+        });
+        try{ localStorage.setItem('lang', l); }catch(e){}
+      }
+      document.querySelectorAll('[data-lang-btn]').forEach(function(b){
+        b.addEventListener('click', function(){ apply(window.__lang==='pt'?'en':'pt'); });
+      });
+      apply(lang);
+    })();
+
     var nav=document.getElementById('nav'), bar=document.getElementById('scrollBar');
     function onScroll(){ var y=window.scrollY||document.documentElement.scrollTop; nav.classList.toggle('scrolled',y>30);
       var h=document.documentElement.scrollHeight-window.innerHeight; bar.style.width=(h>0?(y/h)*100:0)+'%'; }
@@ -657,7 +668,6 @@
     var countIO=new IntersectionObserver(function(es){ es.forEach(function(e,i){ if(e.isIntersecting){ setTimeout(function(){ runCount(e.target); },i*120); countIO.unobserve(e.target); } }); },{threshold:0.5});
     document.querySelectorAll('.count').forEach(function(el){ countIO.observe(el); });
 
-    // data bars (fill on view)
     var barIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting)return; var p=e.target;
       p.querySelectorAll('.dfill').forEach(function(f){ f.style.transform='scaleX('+((f.dataset.w||0)/100)+')'; });
       p.querySelectorAll('.mbar .col').forEach(function(c){ c.style.transform='scaleY(1)'; });
@@ -675,7 +685,7 @@
 
     var copyBtn=document.getElementById('copyEmail'), copyLabel=document.getElementById('copyLabel');
     if(copyBtn){ copyBtn.addEventListener('click',function(){ var email='gabrielbelcastro.contatos@gmail.com';
-      function done(){ copyLabel.textContent='Copied ✓'; setTimeout(function(){ copyLabel.textContent='Copy email'; },1600); }
+      function done(){ copyLabel.textContent=(window.__lang==='pt'?'Copiado ✓':'Copied ✓'); setTimeout(function(){ copyLabel.textContent=(window.__lang==='pt'?'Copiar email':'Copy email'); },1600); }
       if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(email).then(done).catch(fb); } else { fb(); }
       function fb(){ try{ var ta=document.createElement('textarea'); ta.value=email; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done(); }catch(e){ window.location.href='mailto:'+email; } } }); }
 
@@ -683,7 +693,6 @@
     var secIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ navLinks.forEach(function(l){ l.classList.toggle('is-active',l.dataset.sec===e.target.id); }); } }); },{threshold:0.4});
     ['work','data','about','contact'].forEach(function(id){ var s=document.getElementById(id); if(s)secIO.observe(s); });
 
-    // social chips placeholder handler (Instagram/Facebook handles pending)
     document.querySelectorAll('[data-social]').forEach(function(c){ c.style.cursor='default'; c.title='handle pending'; });
   </script>
 </body>
