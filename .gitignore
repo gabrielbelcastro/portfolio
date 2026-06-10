@@ -1,0 +1,9 @@
+.playwright-mcp/
+_build/
+*.log
+v2-*.png
+v3-*.png
+check-*.png
+preview*.png
+.DS_Store
+Thumbs.db

@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Gabriel Belcastro · AI-Native Operator & Automation Builder</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%2308090B'/%3E%3Crect x='1' y='1' width='30' height='30' rx='6.5' fill='none' stroke='%231C1D22'/%3E%3Ctext x='16' y='21' font-family='monospace' font-size='13' font-weight='600' fill='%23C2F04D' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E" />
+  <meta name="description" content="Gabriel Belcastro. AI-native operator and automation builder. Founder of Labs Aero. I wire LLMs into production systems that ship: Miles Terminal, capturadores, autonomous pipelines and modern web." />
+
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Gabriel Belcastro · AI-Native Operator & Automation Builder" />
+  <meta property="og:description" content="Founder of Labs Aero. 789 commits across 11 repos. Production AI tooling for the miles industry, autonomous pipelines and modern web." />
+  <meta property="og:url" content="https://gabrielbelcastro.github.io/portfolio" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    :root{
+      --bg:#08090B; --surface:#0E0F12; --surface-2:#131418; --surface-inset:#0A0B0D;
+      --border:#1C1D22; --border-strong:#2A2C33;
+      --text:#ECEDEE; --text-2:#A1A1AA; --text-muted:#6B6E76; --text-faint:#44464D;
+      --accent:#C2F04D; --accent-dim:rgba(194,240,77,0.12); --accent-line:rgba(194,240,77,0.30);
+      --success:#4ADE80; --azul:#00A1E0; --azul-dim:rgba(0,161,224,0.14);
+      --cat-ai:#C2F04D; --cat-web:#A1A1AA; --cat-bot:#6AB7FF; --cat-ext:#F5B544; --cat-app:#B98CFF;
+      --vignette:radial-gradient(120% 80% at 50% -10%, #0E1014 0%, #08090B 55%);
+      --r-card:14px; --r-sm:10px; --r-pill:999px;
+      --shadow-well:inset 0 1px 0 rgba(0,0,0,0.4), inset 0 0 0 1px rgba(0,0,0,0.25);
+      --shadow-float:0 16px 40px -24px rgba(0,0,0,0.85);
+      --gutter:24px; --maxw:1200px;
+      --ease:cubic-bezier(0.16,1,0.3,1); --t-fast:200ms; --t-mid:300ms; --t-slow:600ms;
+    }
+    *{ box-sizing:border-box; }
+    html{ scroll-behavior:smooth; }
+    body{ margin:0; background:var(--bg); background-image:var(--vignette); color:var(--text-2);
+      font-family:"Geist","Inter Tight",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale; text-rendering:optimizeLegibility; overflow-x:hidden; }
+    ::selection{ background:var(--accent); color:var(--bg); }
+    ::-webkit-scrollbar{ width:10px; } ::-webkit-scrollbar-track{ background:var(--bg); }
+    ::-webkit-scrollbar-thumb{ background:var(--border-strong); border-radius:6px; }
+    ::-webkit-scrollbar-thumb:hover{ background:var(--text-faint); }
+
+    .mono{ font-family:"Geist Mono","JetBrains Mono",ui-monospace,SFMono-Regular,Menlo,monospace; font-feature-settings:"tnum" 1,"zero" 1; letter-spacing:.02em; }
+    .eyebrow{ font-family:"Geist Mono",monospace; font-size:12px; font-weight:500; letter-spacing:.04em; text-transform:uppercase; color:var(--text-muted); }
+    .micro{ font-family:"Geist Mono",monospace; font-size:11px; font-weight:400; letter-spacing:.02em; color:var(--text-muted); font-feature-settings:"tnum" 1,"zero" 1; }
+    h1,h2,h3{ color:var(--text); margin:0; }
+    .h1{ font-size:clamp(44px,8vw,76px); font-weight:600; letter-spacing:-0.04em; line-height:0.98; }
+    .h2{ font-size:clamp(28px,4.4vw,38px); font-weight:600; letter-spacing:-0.03em; line-height:1.05; }
+    .h3{ font-size:19px; font-weight:500; letter-spacing:-0.01em; color:var(--text); }
+    .lead{ font-size:clamp(16px,2.2vw,18px); font-weight:400; color:var(--text-2); line-height:1.6; }
+    .body{ font-size:15px; font-weight:400; line-height:1.6; color:var(--text-2); }
+    .metric-num{ font-family:"Geist Mono",monospace; font-size:clamp(24px,4vw,32px); font-weight:500; color:var(--text); font-feature-settings:"tnum" 1,"zero" 1; }
+    .accent{ color:var(--accent); } .txt{ color:var(--text); } .txt2{ color:var(--text-2); } .muted{ color:var(--text-muted); } .faint{ color:var(--text-faint); }
+    a{ text-decoration:none; color:inherit; }
+
+    .container{ max-width:var(--maxw); margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter); }
+    @media(max-width:640px){ :root{ --gutter:16px; } }
+
+    .grain{ position:fixed; inset:0; pointer-events:none; z-index:1; opacity:.025; mix-blend-mode:overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E"); }
+    .hero-grid{ position:absolute; inset:0; background-image:radial-gradient(circle,#15161A 1px,transparent 1px); background-size:32px 32px;
+      -webkit-mask-image:radial-gradient(120% 90% at 50% 25%,#000 0%,#000 45%,transparent 80%);
+      mask-image:radial-gradient(120% 90% at 50% 25%,#000 0%,#000 45%,transparent 80%); pointer-events:none; z-index:0; }
+    .scroll-bar{ position:fixed; top:0; left:0; height:2px; width:0; background:var(--accent); z-index:60; }
+
+    .u-grow{ background-image:linear-gradient(var(--accent),var(--accent)); background-size:0% 1px; background-position:0 100%; background-repeat:no-repeat; transition:background-size var(--t-fast) var(--ease); }
+    .u-grow:hover, .u-grow.is-active{ background-size:100% 1px; }
+
+    nav#nav{ position:fixed; top:0; inset-inline:0; z-index:50; height:64px; display:flex; align-items:center; transition:background var(--t-mid) var(--ease), border-color var(--t-mid) var(--ease); border-bottom:1px solid transparent; }
+    nav#nav.scrolled{ background:rgba(8,9,11,0.72); backdrop-filter:blur(12px); -webkit-backdrop-filter:blur(12px); border-bottom:1px solid var(--border); }
+    .monogram{ width:28px; height:28px; border:1px solid var(--border); border-radius:var(--r-sm); display:inline-flex; align-items:center; justify-content:center; font-family:"Geist Mono",monospace; font-size:12px; font-weight:500; color:var(--text); }
+    .ghost-btn{ border:1px solid var(--border-strong); color:var(--text); border-radius:var(--r-sm); padding:8px 14px; font-size:13px; font-weight:500; transition:background var(--t-fast),border-color var(--t-fast); }
+    .ghost-btn:hover{ background:var(--surface-2); border-color:var(--text-faint); }
+    .btn-solid{ background:var(--text); color:var(--bg); font-weight:500; border-radius:var(--r-sm); padding:11px 20px; font-size:14px; transition:transform var(--t-fast),background var(--t-fast); display:inline-flex; align-items:center; gap:8px; }
+    .btn-solid:hover{ background:#fff; transform:translateY(-1px); }
+
+    .status-chip{ display:inline-flex; align-items:center; gap:8px; border:1px solid var(--border); background:var(--surface); border-radius:var(--r-pill); padding:5px 12px; }
+    @keyframes breathe{ 0%,100%{opacity:1} 50%{opacity:.55} }
+    .dot{ width:6px; height:6px; border-radius:50%; flex:none; }
+    .dot-live{ background:var(--accent); animation:breathe 2s ease-in-out infinite; } .dot-success{ background:var(--success); }
+
+    .sec{ padding-top:96px; }
+    .sec-head{ display:flex; align-items:baseline; justify-content:space-between; gap:16px; }
+    .hairline{ height:1px; background:var(--border); width:100%; }
+
+    .stats{ border-top:1px solid var(--border); display:grid; grid-template-columns:repeat(4,1fr); }
+    .stats .cell{ padding:24px 20px; border-left:1px solid var(--border); }
+    .stats .cell:first-child{ border-left:none; }
+    @media(max-width:768px){ .stats{ grid-template-columns:repeat(2,1fr); }
+      .stats .cell:nth-child(3){ border-left:none; } .stats .cell:nth-child(3),.stats .cell:nth-child(4){ border-top:1px solid var(--border); } }
+
+    /* Eco (Labs Aero) feature card — full width */
+    .eco-card{ position:relative; border:1px solid var(--border); border-radius:var(--r-card); background:var(--surface); overflow:hidden; display:grid; grid-template-columns:1.1fr 1fr; }
+    @media(max-width:860px){ .eco-card{ grid-template-columns:1fr; } }
+    .eco-media{ position:relative; background:var(--surface-inset); overflow:hidden; min-height:280px; }
+    .eco-media img{ width:100%; height:100%; object-fit:cover; object-position:top left; opacity:.92; transition:transform var(--t-slow) var(--ease),opacity var(--t-slow); }
+    .eco-card:hover .eco-media img{ transform:scale(1.02); opacity:1; }
+    .eco-media::after{ content:""; position:absolute; inset:0; box-shadow:var(--shadow-well); border-right:1px solid var(--border); pointer-events:none; }
+    @media(max-width:860px){ .eco-media::after{ border-right:none; border-bottom:1px solid var(--border); } .eco-media{ min-height:220px; } }
+    .eco-body{ padding:32px; display:flex; flex-direction:column; }
+    .chip{ display:inline-flex; align-items:center; gap:7px; border:1px solid var(--border); background:var(--surface-2); border-radius:var(--r-pill); padding:7px 13px; font-family:"Geist Mono",monospace; font-size:12px; color:var(--text-2); transition:border-color var(--t-fast),color var(--t-fast),background var(--t-fast); }
+    .chip:hover{ border-color:var(--accent-line); color:var(--text); }
+    .prod-row{ display:flex; align-items:center; gap:10px; padding:10px 0; border-top:1px solid var(--border); }
+
+    .feat-grid{ display:grid; grid-template-columns:repeat(2,1fr); gap:16px; }
+    @media(max-width:768px){ .feat-grid{ grid-template-columns:1fr; } }
+    .feat-card{ position:relative; background:var(--surface); border:1px solid var(--border); border-radius:var(--r-card); overflow:visible; transition:background var(--t-fast),border-color var(--t-fast); }
+    .feat-card::before{ content:""; position:absolute; top:0; left:0; right:0; height:1px; background:var(--accent); transform:scaleX(0); transform-origin:left; transition:transform var(--t-mid) var(--ease); z-index:4; border-radius:var(--r-card) var(--r-card) 0 0; }
+    .feat-card:hover::before{ transform:scaleX(1); }
+    .feat-card:hover{ background:var(--surface-2); border-color:var(--border-strong); }
+    .ghost-index{ position:absolute; top:-18px; left:-6px; font-family:"Geist Mono",monospace; font-weight:500; font-size:88px; line-height:1; color:var(--text-faint); z-index:2; pointer-events:none; transition:color var(--t-fast) var(--ease); }
+    @media(max-width:768px){ .ghost-index{ font-size:56px; top:-12px; } }
+    .feat-card:hover .ghost-index{ color:var(--accent); }
+    .media-well{ position:relative; aspect-ratio:16/10; background:var(--surface-inset); border:1px solid var(--border); box-shadow:var(--shadow-well); border-radius:var(--r-sm); margin:0 20px; overflow:hidden; }
+    .media-well img{ width:100%; height:100%; object-fit:cover; object-position:top; opacity:.9; transition:opacity var(--t-slow) var(--ease),transform var(--t-slow) var(--ease); }
+    .feat-card:hover .media-well img{ opacity:1; transform:scale(1.015); }
+    .arrow{ display:inline-block; transition:transform var(--t-fast),color var(--t-fast); color:var(--text-muted); }
+    .feat-card:hover .arrow, .eco-card:hover .arrow{ transform:translate(2px,-2px); color:var(--accent); }
+    .desc-clamp{ display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+    /* gallery (mockups: extensions + n8n) */
+    .gallery{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+    @media(max-width:900px){ .gallery{ grid-template-columns:1fr 1fr; } }
+    @media(max-width:600px){ .gallery{ grid-template-columns:1fr; } }
+    .gcard{ border:1px solid var(--border); border-radius:var(--r-card); background:var(--surface); overflow:hidden; transition:border-color var(--t-fast); }
+    .gcard:hover{ border-color:var(--border-strong); }
+    .gframe{ position:relative; aspect-ratio:16/11; background:var(--surface-inset); overflow:hidden; border-bottom:1px solid var(--border); }
+
+    /* ledger */
+    .ledger{ border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .ledger-row{ position:relative; display:grid; align-items:center; gap:16px; padding:0 14px; min-height:56px; border-top:1px solid var(--border); transition:background var(--t-fast) var(--ease); }
+    .ledger-row:first-child{ border-top:none; }
+    .ledger-row::before{ content:""; position:absolute; left:0; top:0; bottom:0; width:1px; background:var(--accent); transform:scaleY(0); transform-origin:top; transition:transform var(--t-fast) var(--ease); }
+    .ledger-row:hover{ background:var(--surface-2); } .ledger-row:hover::before{ transform:scaleY(1); } .ledger-row:hover .cat-glyph{ color:var(--accent); }
+    .ledger-grid{ grid-template-columns:42px 64px 1.3fr 2fr 1.4fr 1fr; }
+    .cat-glyph{ color:var(--text-muted); transition:color var(--t-fast); display:inline-flex; }
+    @media(max-width:900px){ .ledger-grid{ grid-template-columns:36px 52px 1.4fr 1fr; } .col-desc,.col-stack{ display:none; } }
+    @media(max-width:560px){ .ledger-grid{ grid-template-columns:30px 1fr auto; gap:10px; } .col-glyph{ display:none; } }
+    .ftab{ font-family:"Geist Mono",monospace; font-size:11px; letter-spacing:.04em; border:1px solid var(--border); background:transparent; color:var(--text-muted); border-radius:var(--r-pill); padding:5px 12px; cursor:pointer; transition:all var(--t-fast); }
+    .ftab:hover{ border-color:var(--border-strong); color:var(--text-2); } .ftab.active{ color:var(--accent); border-color:var(--border-strong); }
+
+    /* DATA section */
+    .data-grid{ display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    @media(max-width:860px){ .data-grid{ grid-template-columns:1fr; } }
+    .panel{ border:1px solid var(--border); border-radius:var(--r-card); background:var(--surface); padding:24px; }
+    .bigstat{ display:grid; grid-template-columns:repeat(4,1fr); border:1px solid var(--border); border-radius:var(--r-card); overflow:hidden; }
+    .bigstat .cell{ padding:24px 20px; border-left:1px solid var(--border); }
+    .bigstat .cell:first-child{ border-left:none; }
+    @media(max-width:640px){ .bigstat{ grid-template-columns:repeat(2,1fr); } .bigstat .cell:nth-child(3){ border-left:none; border-top:1px solid var(--border); } .bigstat .cell:nth-child(4){ border-top:1px solid var(--border); } }
+    .drow{ display:grid; grid-template-columns:140px 1fr 46px; align-items:center; gap:12px; padding:7px 0; }
+    @media(max-width:520px){ .drow{ grid-template-columns:96px 1fr 40px; gap:8px; } }
+    .dtrack{ height:8px; background:var(--surface-inset); border:1px solid var(--border); border-radius:4px; overflow:hidden; }
+    .dfill{ height:100%; background:var(--text-faint); border-radius:3px; transform-origin:left; transform:scaleX(0); transition:transform 900ms var(--ease); }
+    .dfill.acc{ background:var(--accent); }
+    .month-bars{ display:flex; align-items:flex-end; gap:10px; height:160px; }
+    .mbar{ flex:1; display:flex; flex-direction:column; align-items:center; gap:8px; height:100%; justify-content:flex-end; }
+    .mbar .col{ width:100%; max-width:54px; background:var(--surface-inset); border:1px solid var(--border); border-bottom:none; border-radius:6px 6px 0 0; transform-origin:bottom; transform:scaleY(0); transition:transform 800ms var(--ease); position:relative; }
+    .mbar .col.peak{ background:var(--accent-dim); border-color:var(--accent-line); }
+    .tag-cloud{ display:flex; flex-wrap:wrap; gap:8px; }
+    .tag{ border:1px solid var(--border); background:var(--surface-2); border-radius:var(--r-pill); padding:6px 12px; font-family:"Geist Mono",monospace; font-size:12px; color:var(--text-2); }
+    .tag.hi{ border-color:var(--accent-line); color:var(--text); }
+
+    /* contact */
+    .contact-list{ border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .contact-row{ position:relative; display:flex; align-items:center; justify-content:space-between; gap:16px; min-height:64px; padding:0 6px; border-top:1px solid var(--border); transition:background var(--t-fast); }
+    .contact-row:first-child{ border-top:none; } .contact-row:hover{ background:var(--surface-2); }
+    .contact-row .cta-arrow{ opacity:0; transform:translateX(-6px); transition:all var(--t-fast); color:var(--text-muted); }
+    .contact-row:hover .cta-arrow{ opacity:1; transform:translateX(0); color:var(--accent); } .contact-row:hover .ci{ color:var(--accent); }
+    .ci{ color:var(--text-muted); transition:color var(--t-fast); display:inline-flex; }
+    a:focus-visible,button:focus-visible{ outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
+
+    .reveal{ opacity:0; transform:translateY(8px); transition:opacity var(--t-slow) var(--ease),transform var(--t-slow) var(--ease); }
+    .reveal.in{ opacity:1; transform:none; }
+
+    /* mockups shared */
+    .mock{ position:absolute; inset:0; font-family:"Geist Mono",monospace; }
+    .mock-bar{ height:22px; background:var(--surface-2); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 10px; gap:6px; }
+    .tl-dot{ width:8px; height:8px; border-radius:50%; background:#2A2C33; }
+    .mock-pill{ font-size:10px; color:var(--text-muted); border:1px solid var(--border); background:var(--surface); border-radius:var(--r-pill); padding:2px 8px; }
+    @keyframes blink{ 0%,49%{opacity:1} 50%,100%{opacity:0} }
+    .caret{ display:inline-block; width:6px; height:10px; background:var(--accent); vertical-align:-1px; animation:blink 1s steps(1) infinite; }
+    .log-line{ opacity:0; transition:opacity var(--t-mid) var(--ease); } .log-line.in{ opacity:1; }
+    .bar-track{ height:4px; background:var(--surface-2); border-radius:2px; overflow:hidden; } .bar-fill{ height:100%; background:var(--text-muted); } .bar-fill.acc{ background:var(--accent); } .bar-fill.azul{ background:var(--azul); }
+    .switch{ width:18px; height:10px; border:1px solid var(--border); background:var(--surface-2); border-radius:var(--r-pill); position:relative; flex:none; } .switch i{ position:absolute; top:1px; right:1px; width:6px; height:6px; border-radius:50%; background:var(--accent); }
+    .switch.azul i{ background:var(--azul); }
+    .ext-popup{ position:absolute; top:34px; right:12px; width:min(220px,72%); background:var(--surface); border:1px solid var(--border); border-radius:var(--r-sm); box-shadow:var(--shadow-float); overflow:hidden; }
+    /* n8n flow */
+    .n8n{ position:absolute; inset:0; padding:14px; background-image:radial-gradient(circle,#15161A 1px,transparent 1px); background-size:18px 18px; }
+    .nnode{ position:absolute; border:1px solid var(--border-strong); background:var(--surface); border-radius:8px; padding:6px 8px; font-size:9px; color:var(--text-2); display:flex; align-items:center; gap:5px; white-space:nowrap; }
+    .nnode .nd{ width:5px; height:5px; border-radius:50%; background:var(--accent); flex:none; }
+    .nnode.alt .nd{ background:var(--azul); } .nnode.warn .nd{ background:var(--cat-ext); }
+
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{ animation-duration:.001ms!important; animation-iteration-count:1!important; transition-duration:.001ms!important; scroll-behavior:auto!important; }
+      .reveal{ opacity:1; transform:none; } .log-line{ opacity:1; } .dfill,.mbar .col{ transform:none!important; }
+    }
+    @media(min-width:640px){ [data-show-sm]{ display:inline-flex!important; } }
+    @media(min-width:768px){ [data-show-md]{ display:inline-flex!important; } [data-show-mobile]{ display:none!important; } }
+  </style>
+</head>
+
+<body>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="scroll-bar" id="scrollBar" aria-hidden="true"></div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;width:100%;">
+      <a href="#top" style="display:flex;align-items:center;gap:10px;">
+        <span class="monogram">GB</span>
+        <span class="mono" style="font-size:12px;color:var(--text);display:none;" data-show-sm>GABRIEL BELCASTRO</span>
+      </a>
+      <div style="display:flex;align-items:center;gap:18px;">
+        <a href="#work" class="eyebrow u-grow nav-link" data-sec="work" style="display:none;" data-show-md>WORK</a>
+        <a href="#data" class="eyebrow u-grow nav-link" data-sec="data" style="display:none;" data-show-md>DATA</a>
+        <a href="#about" class="eyebrow u-grow nav-link" data-sec="about" style="display:none;" data-show-md>ABOUT</a>
+        <span style="width:1px;height:18px;background:var(--border-strong);display:none;" data-show-md></span>
+        <a href="#contact" class="ghost-btn" style="display:none;" data-show-sm>Get in touch</a>
+        <button id="menuBtn" aria-label="Menu" aria-expanded="false" class="ghost-btn" style="display:inline-flex;flex-direction:column;gap:3px;padding:9px 10px;" data-show-mobile>
+          <span style="width:14px;height:1px;background:var(--text);display:block;"></span>
+          <span style="width:14px;height:1px;background:var(--text);display:block;"></span>
+          <span style="width:14px;height:1px;background:var(--text);display:block;"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+  <div id="mobileMenu" style="position:fixed;top:64px;inset-inline:0;z-index:49;background:var(--surface);border-bottom:1px solid var(--border);display:none;">
+    <a href="#work" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">Work</a>
+    <a href="#data" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">Data</a>
+    <a href="#about" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">About</a>
+    <a href="#contact" class="mobile-link" style="display:block;padding:18px var(--gutter);border-top:1px solid var(--border);font-size:14px;color:var(--text);">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <header id="top" style="position:relative;overflow:hidden;">
+    <div class="hero-grid" aria-hidden="true"></div>
+    <div class="container" style="position:relative;z-index:2;padding-top:120px;padding-bottom:96px;">
+      <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <span class="eyebrow">GABRIEL BELCASTRO</span>
+        <span style="width:1px;height:12px;background:var(--border-strong);"></span>
+        <span class="eyebrow">RIO DE JANEIRO, BR</span>
+        <span class="status-chip reveal" style="margin-left:auto;">
+          <span class="dot dot-live"></span>
+          <span class="mono" style="font-size:12px;color:var(--text-2);">Available for remote work</span>
+        </span>
+      </div>
+      <h1 class="h1" style="margin-top:40px;max-width:14ch;">
+        <span class="hl-line" style="display:block;">I wire LLMs into</span>
+        <span class="hl-line" style="display:block;">production systems</span>
+        <span class="hl-line" style="display:block;">that <span class="accent">ship.</span></span>
+      </h1>
+      <p class="lead" style="margin-top:24px;max-width:600px;">
+        AI-native operator and automation builder. Founder of <span class="txt" style="font-weight:500;">Labs Aero</span>, a suite of AI tools for the miles industry. I scope, build, deploy and measure. Solo.
+      </p>
+      <div style="margin-top:32px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;">
+        <a href="#work" class="btn-solid">View work
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
+        </a>
+        <a href="#contact" class="ghost-btn" style="padding:11px 20px;font-size:14px;">Get in touch</a>
+        <span style="width:1px;height:20px;background:var(--border-strong);"></span>
+        <a href="https://www.linkedin.com/in/gabrielbelcastro" target="_blank" rel="noopener" class="mono u-grow" style="font-size:12px;color:var(--text-2);">LinkedIn</a>
+        <a href="https://github.com/gabrielbelcastro" target="_blank" rel="noopener" class="mono u-grow" style="font-size:12px;color:var(--text-2);">GitHub</a>
+      </div>
+      <div class="stats reveal" style="margin-top:80px;">
+        <div class="cell"><div class="metric-num count" data-target="789" data-suffix="">0</div><div class="eyebrow" style="margin-top:8px;">Commits shipped</div></div>
+        <div class="cell"><div class="metric-num count" data-target="11" data-suffix="">0</div><div class="eyebrow" style="margin-top:8px;">Repos built</div></div>
+        <div class="cell"><div class="metric-num count" data-target="50" data-prefix="~" data-suffix="%">0</div><div class="eyebrow" style="margin-top:8px;">Time saved w/ AI</div></div>
+        <div class="cell"><div class="metric-num count" data-target="600" data-suffix="+">0</div><div class="eyebrow" style="margin-top:8px;">Tickets / month</div></div>
+      </div>
+    </div>
+  </header>
+
+  <!-- WORK -->
+  <section id="work" class="sec">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">SELECTED WORK</span><span class="micro">FEATURED</span></div>
+      <div class="hairline" style="margin:14px 0 28px;"></div>
+
+      <!-- LABS AERO ecosystem -->
+      <a href="https://labsaero.com" target="_blank" rel="noopener" class="eco-card reveal" style="display:grid;margin-bottom:16px;">
+        <div class="eco-media"><img src="screenshots/labsaero.jpg" alt="Labs Aero website" loading="lazy" /></div>
+        <div class="eco-body">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px;">
+            <span class="micro"><span class="muted">ecosystem:</span> <span class="dot" style="display:inline-block;background:var(--accent);"></span> <span class="txt2">founder / solo</span></span>
+            <span class="micro">labsaero.com ↗</span>
+          </div>
+          <h3 class="h2" style="font-size:30px;">Labs Aero <span class="arrow">↗</span></h3>
+          <p class="body" style="margin:10px 0 18px;max-width:46ch;">My own product suite: AI tooling built for people who operate airline miles seriously. Site, newsletter, waitlist and five products under one brand. <span class="txt">Inteligência aplicada a milhas.</span></p>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px;">
+            <span class="chip">Site</span>
+            <span class="chip">Ferramentas</span>
+            <span class="chip">Newsletter</span>
+            <span class="chip" data-social="instagram">Instagram</span>
+            <span class="chip" data-social="facebook">Facebook</span>
+          </div>
+          <div style="margin-top:auto;">
+            <div class="prod-row"><span class="dot" style="background:var(--accent);"></span><span class="mono" style="font-size:12px;color:var(--text);">Miles Terminal</span><span class="micro" style="margin-left:auto;">web app</span></div>
+            <div class="prod-row"><span class="dot" style="background:var(--azul);"></span><span class="mono" style="font-size:12px;color:var(--text);">Capturador Azul</span><span class="micro" style="margin-left:auto;">chrome ext</span></div>
+            <div class="prod-row"><span class="dot" style="background:var(--accent);"></span><span class="mono" style="font-size:12px;color:var(--text);">Capturador Smiles</span><span class="micro" style="margin-left:auto;">ext + SaaS</span></div>
+            <div class="prod-row"><span class="dot" style="background:var(--cat-app);"></span><span class="mono" style="font-size:12px;color:var(--text);">Transcrevedor de Documentos</span><span class="micro" style="margin-left:auto;">claude vision</span></div>
+          </div>
+        </div>
+      </a>
+
+      <!-- 2-up featured -->
+      <div class="feat-grid">
+        <!-- Miles Terminal -->
+        <article class="feat-card reveal">
+          <span class="ghost-index">01</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;">
+            <span class="micro"><span class="muted">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ai/automation</span></span>
+            <span class="micro">[ labs aero ]</span>
+          </div>
+          <div class="media-well" data-mock="miles">
+            <div class="mock" aria-hidden="true">
+              <div class="mock-bar"><span class="tl-dot"></span><span class="tl-dot"></span><span class="tl-dot"></span><span class="mock-pill" style="margin:0 auto;">miles-terminal · labsaero.com</span></div>
+              <div style="display:flex;height:calc(100% - 22px);">
+                <div style="flex:0 0 60%;padding:8px 10px;border-right:1px solid var(--border);font-size:10px;line-height:1.65;">
+                  <div class="log-line"><span class="faint">14:32:01</span> <span class="muted">[OCR]</span> OCR.space → 0.62 · fallback</div>
+                  <div class="log-line"><span class="faint">14:32:03</span> <span class="muted">[OCR]</span> Tesseract → 0.74</div>
+                  <div class="log-line"><span class="faint">14:32:04</span> <span class="muted">[VISION]</span> Claude Vision → MATCH <span class="accent">✓</span></div>
+                  <div class="log-line"><span class="faint">14:32:05</span> <span class="muted">[IATA]</span> Levenshtein d=1 → GRU <span class="accent">✓</span></div>
+                  <div class="log-line"><span class="faint">14:32:06</span> <span class="muted">[RANK]</span> CSV col RESPONSAVEL ok</div>
+                  <div class="log-line"><span class="faint">14:32:07</span> <span class="muted">[PDF]</span> bilhete parsed <span class="accent">✓</span> <span class="caret"></span></div>
+                </div>
+                <div style="flex:1;padding:8px 10px;font-size:10px;">
+                  <div style="color:var(--text-muted);margin-bottom:3px;">SMILES</div><div class="bar-track"><span class="bar-fill" style="width:82%;"></span></div>
+                  <div style="color:var(--text-muted);margin:8px 0 3px;">LATAM</div><div class="bar-track"><span class="bar-fill acc" style="width:64%;"></span></div>
+                  <div style="color:var(--text-muted);margin:8px 0 3px;">AZUL</div><div class="bar-track"><span class="bar-fill azul" style="width:45%;"></span></div>
+                  <div style="color:var(--text-muted);margin-top:10px;">DESEMPENHO · client-side</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:16px 20px 0;"><h3 class="h3">Miles Terminal</h3></div>
+          <p class="body desc-clamp" style="padding:8px 20px 0;">Multi-carrier command center in production. Dual backend, stealth browser, a 3-layer OCR pipeline ending in Claude Vision, and a client-side performance dashboard.</p>
+          <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;">3-LAYER OCR · <span class="accent">LEVENSHTEIN</span> IATA · pm2 :3001</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px 18px;gap:12px;">
+            <span class="micro">Node.js · Puppeteer · Claude Vision · OCR</span>
+            <span class="micro" style="display:inline-flex;align-items:center;gap:6px;"><span class="dot dot-success"></span>production</span>
+          </div>
+        </article>
+
+        <!-- Capturador Smiles (real landing) -->
+        <a class="feat-card reveal" href="https://capturador-smiles.labsaero.com" target="_blank" rel="noopener" style="display:block;">
+          <span class="ghost-index">02</span>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:18px 20px 12px;">
+            <span class="micro"><span class="muted">type:</span> <span class="dot" style="display:inline-block;background:var(--cat-ai);"></span> <span class="txt2">ext + SaaS</span></span>
+            <span class="micro">[ labs aero ]</span>
+          </div>
+          <div class="media-well"><img src="screenshots/capturador-smiles-landing.jpg" alt="Capturador Smiles landing page" loading="lazy" /></div>
+          <div style="padding:16px 20px 0;"><h3 class="h3">Capturador Smiles <span class="arrow">↗</span></h3></div>
+          <p class="body desc-clamp" style="padding:8px 20px 0;">Chrome extension + Python backend turned SaaS. Supabase auth, Stripe billing, AES-GCM vault from a single login, Twilio Verify and Resend edge functions.</p>
+          <div class="micro" style="border-top:1px solid var(--border);margin-top:14px;padding:14px 20px;"><span class="accent">438 COMMITS</span> · AES-GCM VAULT · R$ 18,99/mo</div>
+          <div style="display:flex;justify-content:space-between;align-items:center;padding:0 20px 18px;gap:12px;">
+            <span class="micro">Supabase · Stripe · Twilio · Resend</span>
+            <span class="micro" style="display:inline-flex;align-items:center;gap:6px;"><span class="dot dot-success"></span>capturador-smiles ↗</span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY: extensions + n8n mockups -->
+  <section class="sec">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">UNDER THE HOOD · EXTENSIONS &amp; PIPELINES</span><span class="micro">MOCKUPS</span></div>
+      <div class="hairline" style="margin:14px 0 12px;"></div>
+      <p class="body reveal" style="max-width:60ch;margin-bottom:24px;">Representative UI of the Chrome extensions and the n8n automation flows. Stylized from the real products.</p>
+
+      <div class="gallery">
+        <!-- Capturador Smiles extension popup -->
+        <div class="gcard reveal">
+          <div class="gframe" data-mock="capt">
+            <div class="mock" aria-hidden="true">
+              <div class="mock-bar" style="height:26px;"><span class="mock-pill" style="flex:1;margin:0;">app.smiles.com.br</span><span style="display:flex;gap:4px;margin-left:8px;"><span style="width:13px;height:13px;border:1px solid var(--border);border-radius:4px;"></span><span style="width:15px;height:15px;border:1px solid var(--accent-line);border-radius:4px;background:var(--accent-dim);"></span></span></div>
+              <div class="ext-popup">
+                <div style="padding:9px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;"><span style="width:15px;height:15px;border:1px solid var(--accent-line);background:var(--accent-dim);border-radius:4px;"></span><span style="font-size:11px;font-weight:500;color:var(--text);">Capturador Smiles</span><span style="margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-size:9px;color:var(--text-2);"><span class="dot dot-success"></span>Conectado</span></div>
+                <div style="font-size:10px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--border);"><span class="txt2">Stealth browser</span><span class="switch"><i></i></span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--border);"><span class="txt2">Cofre AES-GCM</span><span class="accent">unlocked</span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;"><span class="txt2">Smart sheet</span><span class="accent">detected</span></div>
+                </div>
+                <div style="padding:9px 10px;border-top:1px solid var(--border);"><div style="background:var(--text);color:var(--bg);border-radius:8px;font-size:10px;font-weight:500;text-align:center;padding:7px 0;">Capturar conta</div></div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:14px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;">Capturador Smiles · extension</h3><span class="micro" style="color:var(--cat-ai);">●</span></div>
+            <p class="micro" style="margin-top:6px;">MV3 · Supabase · AES-GCM · Stripe</p>
+          </div>
+        </div>
+
+        <!-- Capturador Azul extension popup -->
+        <div class="gcard reveal">
+          <div class="gframe" data-mock="azul">
+            <div class="mock" aria-hidden="true">
+              <div class="mock-bar" style="height:26px;"><span class="mock-pill" style="flex:1;margin:0;">tudoazul.com</span><span style="display:flex;gap:4px;margin-left:8px;"><span style="width:13px;height:13px;border:1px solid var(--border);border-radius:4px;"></span><span style="width:15px;height:15px;border:1px solid rgba(0,161,224,0.4);border-radius:4px;background:var(--azul-dim);"></span></span></div>
+              <div class="ext-popup">
+                <div style="padding:9px 10px;border-bottom:1px solid var(--border);display:flex;align-items:center;gap:8px;"><span style="width:15px;height:15px;border:1px solid rgba(0,161,224,0.4);background:var(--azul-dim);border-radius:4px;"></span><span style="font-size:11px;font-weight:500;color:var(--text);">Capturador Azul</span><span style="margin-left:auto;display:inline-flex;align-items:center;gap:4px;font-size:9px;color:var(--text-2);"><span class="dot" style="background:var(--azul);"></span>MV3</span></div>
+                <div style="font-size:10px;">
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--border);"><span class="txt2">Captura login</span><span class="switch azul"><i></i></span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--border);"><span class="txt2">Preços por trecho</span><span style="color:var(--azul);">on</span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;border-bottom:1px solid var(--border);"><span class="txt2">Pontos + Dinheiro</span><span style="color:var(--azul);">P+D</span></div>
+                  <div style="display:flex;justify-content:space-between;align-items:center;padding:7px 10px;"><span class="txt2">Auto-fill cartão</span><span class="switch azul"><i></i></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div style="padding:14px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;">Capturador Azul · extension</h3><span class="micro" style="color:var(--cat-bot);">●</span></div>
+            <p class="micro" style="margin-top:6px;">MV3 · no backend · TudoAzul P+D</p>
+          </div>
+        </div>
+
+        <!-- n8n flow -->
+        <div class="gcard reveal">
+          <div class="gframe" data-mock="n8n">
+            <div class="n8n" aria-hidden="true">
+              <span class="nnode" style="top:14px;left:12px;"><span class="nd"></span>Schedule 9AM</span>
+              <span class="nnode alt" style="top:60px;left:22px;"><span class="nd"></span>HTTP source</span>
+              <span class="nnode" style="top:106px;left:14px;"><span class="nd"></span>Merge + rank</span>
+              <span class="nnode warn" style="top:150px;left:30px;"><span class="nd"></span>DeepSeek caption</span>
+              <span class="nnode" style="top:196px;left:18px;"><span class="nd"></span>IG · FB · YT</span>
+              <svg style="position:absolute;inset:0;width:100%;height:100%;" aria-hidden="true"><path d="M70 30 C 120 40, 60 60, 95 74" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/><path d="M100 80 C 60 96, 130 100, 80 120" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/><path d="M90 126 C 150 140, 70 150, 110 164" fill="none" stroke="var(--border-strong)" stroke-width="1.5"/><path d="M110 170 C 60 186, 130 192, 88 210" fill="none" stroke="var(--accent-line)" stroke-width="1.5"/></svg>
+            </div>
+          </div>
+          <div style="padding:14px 16px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;"><h3 class="h3" style="font-size:15px;">n8n autopost flow</h3><span class="micro" style="color:var(--cat-ai);">●</span></div>
+            <p class="micro" style="margin-top:6px;">n8n · DeepSeek · Meta API · YouTube</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OTHER PROJECTS -->
+  <section class="sec">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">MORE · TOOLS, EXTENSIONS &amp; CLIENT SITES</span><span class="micro" id="moreCount">15+ SHIPPED</span></div>
+      <div class="hairline" style="margin:14px 0 20px;"></div>
+      <div class="reveal" style="display:flex;gap:8px;margin-bottom:18px;overflow-x:auto;padding-bottom:2px;">
+        <button class="ftab active" data-filter="all">ALL</button>
+        <button class="ftab" data-filter="ai">AI</button>
+        <button class="ftab" data-filter="ext">EXT</button>
+        <button class="ftab" data-filter="web">WEB</button>
+        <button class="ftab" data-filter="bot">BOT</button>
+        <button class="ftab" data-filter="app">APP</button>
+      </div>
+      <div class="ledger reveal" id="ledger">
+        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">01·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Miles Terminal Free</span><span class="body col-desc">Self-hosted edition · LATAM cookie-pairing</span><span class="micro col-stack">Node.js · OCR</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">02·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Sistema Criação de Contas</span><span class="body col-desc">Multi-agent signup · 5-layer anti-bot stealth</span><span class="micro col-stack">Playwright · Docker · ghost-cursor</span><span class="micro" style="text-align:right;">OPERATIONAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">03·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">WhatsApp Milhas</span><span class="body col-desc">Photos → Claude Vision → Sheets · Docker Swarm</span><span class="micro col-stack">WAHA · Flask · Claude Vision</span><span class="micro" style="text-align:right;">PRODUCTION</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ext"><span class="micro col-idx">04·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v3a2 2 0 1 0 4 0V3h4v4h-3a2 2 0 1 0 0 4h3v4h-4v-3a2 2 0 1 0-4 0v3H6v-4h3a2 2 0 1 0 0-4H6V3z"/></svg> <span class="micro">EXT</span></span><span class="txt" style="font-size:14px;">Transcrevedor de Documentos</span><span class="body col-desc">RG/CNH/passaporte via Claude Vision</span><span class="micro col-stack">Chrome MV3 · Claude Vision</span><span class="micro" style="text-align:right;">v1.0</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ext"><span class="micro col-idx">05·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M10 3v3a2 2 0 1 0 4 0V3h4v4h-3a2 2 0 1 0 0 4h3v4h-4v-3a2 2 0 1 0-4 0v3H6v-4h3a2 2 0 1 0 0-4H6V3z"/></svg> <span class="micro">EXT</span></span><span class="txt" style="font-size:14px;">LATAM Oferta Copier</span><span class="body col-desc">Captures LATAM offers → WhatsApp via WAHA</span><span class="micro col-stack">Chrome MV3 · WAHA</span><span class="micro" style="text-align:right;">v1.4</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">06·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Telegram Seller Bot</span><span class="body col-desc">Monitors Telegram group · auto-sells miles</span><span class="micro col-stack">Python · Telethon</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="ai"><span class="micro col-idx">07·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M12 3v18M3 12h18M5.6 5.6l12.8 12.8M18.4 5.6 5.6 18.4"/></svg> <span class="micro">AI</span></span><span class="txt" style="font-size:14px;">Emissão Azul</span><span class="body col-desc">Automated Azul ticketing · GUI + OCR</span><span class="micro col-stack">Python · Selenium · CustomTkinter</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">08·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Flytrack Monitor</span><span class="body col-desc">Real-time order alerts on Flytrack panel</span><span class="micro col-stack">Node · Puppeteer · Socket.io</span><span class="micro" style="text-align:right;">PRODUCTION</span></div>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://turistae.com.br" target="_blank" rel="noopener"><span class="micro col-idx">09·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Turistaê</span><span class="body col-desc">Travel agency landing · static / Hostinger</span><span class="micro col-stack">React → static</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>turistae ↗</span></a>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://viajagencia.com.br" target="_blank" rel="noopener"><span class="micro col-idx">10·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Viajá Turismo</span><span class="body col-desc">Travel agency landing · WhatsApp quote form</span><span class="micro col-stack">React 19 · Tailwind</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>viajagencia ↗</span></a>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://rendaaerea.com.br" target="_blank" rel="noopener"><span class="micro col-idx">11·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Renda Aérea</span><span class="body col-desc">Passive-income-with-miles landing · Gemini API</span><span class="micro col-stack">React 19 · Vite · Gemini</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>rendaaerea ↗</span></a>
+        <a class="ledger-row ledger-grid" data-cat="web" href="https://houseacessoriosmcz.com.br" target="_blank" rel="noopener"><span class="micro col-idx">12·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="m9 8-4 4 4 4M15 8l4 4-4 4"/></svg> <span class="micro">WEB</span></span><span class="txt" style="font-size:14px;">Apple House</span><span class="body col-desc">Apple store SPA · catalogue + trade-in</span><span class="micro col-stack">React 19 · TS · Router</span><span class="micro" style="display:inline-flex;align-items:center;gap:6px;justify-content:flex-end;"><span class="dot dot-success"></span>houseacessorios ↗</span></a>
+        <div class="ledger-row ledger-grid" data-cat="app"><span class="micro col-idx">13·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg> <span class="micro">APP</span></span><span class="txt" style="font-size:14px;">Barbearia Booking</span><span class="body col-desc">Appointment SPA · availability calendar</span><span class="micro col-stack">React · Vite · Router</span><span class="micro" style="text-align:right;">INTERNAL</span></div>
+        <div class="ledger-row ledger-grid" data-cat="bot"><span class="micro col-idx">14·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/><circle cx="9" cy="10.5" r="0.6" fill="currentColor"/><circle cx="12" cy="10.5" r="0.6" fill="currentColor"/><circle cx="15" cy="10.5" r="0.6" fill="currentColor"/></svg> <span class="micro">BOT</span></span><span class="txt" style="font-size:14px;">Lançamentos Investimentos</span><span class="body col-desc">WhatsApp bot · auto-logs statements to Sheets</span><span class="micro col-stack">whatsapp-web.js · Gemini</span><span class="micro" style="text-align:right;">PRODUCTION</span></div>
+        <div class="ledger-row ledger-grid" data-cat="app"><span class="micro col-idx">15·</span><span class="col-glyph cat-glyph"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="7" y="3" width="10" height="18" rx="2"/><line x1="11" y1="18" x2="13" y2="18"/></svg> <span class="micro">APP</span></span><span class="txt" style="font-size:14px;">Ofertas MCZ</span><span class="body col-desc">Daily miles-deal report from Maceió · PDF</span><span class="micro col-stack">Python · ReportLab</span><span class="micro" style="text-align:right;">DAILY</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DATA -->
+  <section id="data" class="sec">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">BY THE NUMBERS</span><span class="micro">LIVE FROM GITHUB · 2026</span></div>
+      <div class="hairline" style="margin:14px 0 28px;"></div>
+
+      <div class="bigstat reveal" style="margin-bottom:16px;">
+        <div class="cell"><div class="metric-num count" data-target="789">0</div><div class="eyebrow" style="margin-top:8px;">Total commits</div></div>
+        <div class="cell"><div class="metric-num count" data-target="11">0</div><div class="eyebrow" style="margin-top:8px;">Active repos</div></div>
+        <div class="cell"><div class="metric-num count" data-target="4">0</div><div class="eyebrow" style="margin-top:8px;">Months</div></div>
+        <div class="cell"><div class="metric-num"><span class="count" data-target="197">0</span></div><div class="eyebrow" style="margin-top:8px;">Commits / month avg</div></div>
+      </div>
+
+      <div class="data-grid">
+        <!-- monthly activity -->
+        <div class="panel reveal">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow">COMMIT ACTIVITY</span><span class="micro">mar–jun 2026</span></div>
+          <div class="month-bars" id="monthBars">
+            <div class="mbar"><div class="col" data-h="16" style="height:16%;"></div><span class="micro">62</span><span class="micro faint">MAR</span></div>
+            <div class="mbar"><div class="col" data-h="78" style="height:78%;"></div><span class="micro">302</span><span class="micro faint">APR</span></div>
+            <div class="mbar"><div class="col peak" data-h="100" style="height:100%;"></div><span class="micro accent">386</span><span class="micro faint">MAY</span></div>
+            <div class="mbar"><div class="col" data-h="10" style="height:10%;"></div><span class="micro">39</span><span class="micro faint">JUN</span></div>
+          </div>
+        </div>
+
+        <!-- languages -->
+        <div class="panel reveal">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow">LANGUAGES</span><span class="micro">by commits</span></div>
+          <div class="drow"><span class="micro txt2">JavaScript</span><div class="dtrack"><span class="dfill acc" data-w="100"></span></div><span class="micro" style="text-align:right;">532</span></div>
+          <div class="drow"><span class="micro txt2">HTML/CSS</span><div class="dtrack"><span class="dfill" data-w="37"></span></div><span class="micro" style="text-align:right;">196</span></div>
+          <div class="drow"><span class="micro txt2">Python</span><div class="dtrack"><span class="dfill" data-w="11"></span></div><span class="micro" style="text-align:right;">61</span></div>
+          <div style="border-top:1px solid var(--border);margin-top:14px;padding-top:14px;">
+            <span class="eyebrow">ALSO</span>
+            <p class="micro" style="margin-top:8px;line-height:1.8;">TypeScript · React · Node.js · Express · Flask · Bash · SQL</p>
+          </div>
+        </div>
+
+        <!-- commits per project -->
+        <div class="panel reveal" style="grid-column:1 / -1;">
+          <div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:20px;"><span class="eyebrow">COMMITS PER PROJECT</span><span class="micro">top repos · private</span></div>
+          <div class="drow"><span class="micro txt2">Capturador Smiles</span><div class="dtrack"><span class="dfill acc" data-w="100"></span></div><span class="micro" style="text-align:right;">438</span></div>
+          <div class="drow"><span class="micro txt2">Miles Terminal Free</span><div class="dtrack"><span class="dfill" data-w="32"></span></div><span class="micro" style="text-align:right;">140</span></div>
+          <div class="drow"><span class="micro txt2">Capturador (free)</span><div class="dtrack"><span class="dfill" data-w="18"></span></div><span class="micro" style="text-align:right;">80</span></div>
+          <div class="drow"><span class="micro txt2">LabsAero Newsletter</span><div class="dtrack"><span class="dfill" data-w="13"></span></div><span class="micro" style="text-align:right;">59</span></div>
+          <div class="drow"><span class="micro txt2">Miles Terminal (prod)</span><div class="dtrack"><span class="dfill" data-w="10"></span></div><span class="micro" style="text-align:right;">43</span></div>
+          <div class="drow"><span class="micro txt2">Transcrevedor de Docs</span><div class="dtrack"><span class="dfill" data-w="3"></span></div><span class="micro" style="text-align:right;">12</span></div>
+        </div>
+
+        <!-- built with -->
+        <div class="panel reveal">
+          <span class="eyebrow">BUILT WITH</span>
+          <p class="micro" style="margin:6px 0 16px;color:var(--text-faint);">Services, infra &amp; AI used across the projects</p>
+          <div class="tag-cloud">
+            <span class="tag hi">Claude (Anthropic)</span><span class="tag hi">Claude Vision</span><span class="tag">DeepSeek</span><span class="tag">Gemini API</span>
+            <span class="tag">n8n</span><span class="tag">Playwright</span><span class="tag">Puppeteer</span><span class="tag">ghost-cursor</span>
+            <span class="tag">Supabase</span><span class="tag">Stripe</span><span class="tag">Twilio Verify</span><span class="tag">Resend</span>
+            <span class="tag">Docker Swarm</span><span class="tag">Traefik</span><span class="tag">Hostinger</span><span class="tag">GitHub Actions</span>
+            <span class="tag">OCR.space</span><span class="tag">Tesseract</span><span class="tag">CapSolver</span><span class="tag">WAHA</span>
+          </div>
+        </div>
+
+        <!-- how it's built: MCPs + skills -->
+        <div class="panel reveal">
+          <span class="eyebrow">HOW IT'S BUILT · MCPs &amp; SKILLS</span>
+          <p class="micro" style="margin:6px 0 16px;color:var(--text-faint);">AI tooling &amp; engineering capabilities used to ship</p>
+          <div class="tag-cloud" style="margin-bottom:14px;">
+            <span class="tag hi">Claude Code</span><span class="tag">Playwright MCP</span><span class="tag">Chrome MCP</span><span class="tag">Hostinger MCP</span><span class="tag">n8n MCP</span><span class="tag">Supabase MCP</span><span class="tag">GitHub (gh)</span>
+          </div>
+          <div style="border-top:1px solid var(--border);padding-top:14px;">
+            <div class="tag-cloud">
+              <span class="tag">Stealth automation</span><span class="tag">Human-behavior sim</span><span class="tag">2FA automation</span><span class="tag">AES-GCM crypto</span><span class="tag">Anti-bot evasion</span><span class="tag">OCR pipelines</span><span class="tag">LLM integration</span><span class="tag">Autonomous pipelines</span><span class="tag">Multi-carrier integration</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="micro" style="margin-top:14px;color:var(--text-faint);">Commit figures aggregated from 11 private GitHub repositories via the GitHub API, Mar–Jun 2026.</p>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="sec">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">ABOUT</span></div>
+      <div class="hairline" style="margin:14px 0 40px;"></div>
+      <div style="display:grid;grid-template-columns:38% 1fr;gap:64px;align-items:start;" class="about-grid">
+        <div class="reveal">
+          <h2 class="h2" style="margin-bottom:28px;">A builder, not just a user of AI.</h2>
+          <div style="margin-bottom:28px;">
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">ROLE</span><span class="txt" style="font-size:12px;text-align:right;">Senior emissor · founder, Labs Aero</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">BASED</span><span class="txt" style="font-size:12px;">Rio de Janeiro, BR</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">STACK</span><span class="txt" style="font-size:12px;text-align:right;">Node · Python · n8n · Claude · React</span></div>
+            <div style="display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--border);" class="mono"><span class="muted" style="font-size:12px;">OPEN TO</span><span class="txt" style="font-size:12px;">Remote roles &amp; freelance</span></div>
+          </div>
+          <div class="micro" style="margin-bottom:12px;">HOW I OPERATE · ONE-PERSON LOOP</div>
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;">
+            <span class="chip"><span class="dot" style="background:var(--accent);"></span>SCOPE</span><span class="muted mono" style="font-size:12px;">→</span>
+            <span class="chip"><span class="dot" style="background:var(--accent);"></span>BUILD</span><span class="muted mono" style="font-size:12px;">→</span>
+            <span class="chip"><span class="dot" style="background:var(--accent);"></span>DEPLOY</span><span class="muted mono" style="font-size:12px;">→</span>
+            <span class="chip"><span class="dot" style="background:var(--accent);"></span>MEASURE</span>
+          </div>
+        </div>
+        <div class="reveal">
+          <p class="lead" style="margin:0 0 18px;max-width:560px;">I spent the last two years on a high-volume customer desk: <span class="txt" style="font-weight:500;">600 tickets a month</span>, critical cases, and onboarding for <span class="txt" style="font-weight:500;">~50 agents</span>. I know exactly where the time goes and which parts are repetitive enough for AI to own.</p>
+          <p class="lead" style="margin:0;max-width:560px;">So I started shipping. I embedded Claude into my daily workflow and cut handling time by <span class="txt" style="font-weight:500;">~50%</span>. Then I founded <span class="txt" style="font-weight:500;">Labs Aero</span> and shipped <span class="txt" style="font-weight:500;">789 commits across 11 repos</span> in four months: a multi-carrier dashboard, Chrome extensions, autonomous pipelines, and production websites for paying clients. I operate like a one-person company, and AI is my team.</p>
+          <div class="hairline" style="margin:32px 0 24px;"></div>
+          <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;" class="caps-grid">
+            <div><div class="eyebrow" style="margin-bottom:6px;">AI SYSTEMS</div><div class="body">LLM pipelines, OCR, vision</div></div>
+            <div><div class="eyebrow" style="margin-bottom:6px;">AUTOMATION</div><div class="body">n8n, stealth browsers, 2FA</div></div>
+            <div><div class="eyebrow" style="margin-bottom:6px;">PRODUCT</div><div class="body">SaaS, billing, auth, web</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="sec" style="padding-bottom:0;">
+    <div class="container">
+      <div class="sec-head reveal"><span class="eyebrow">CONTACT</span></div>
+      <div class="hairline" style="margin:14px 0 32px;"></div>
+      <h2 class="h2 reveal">Let's <span class="accent">build</span> something.</h2>
+      <p class="lead reveal" style="margin:12px 0 32px;max-width:520px;">Open to remote roles, freelance, and genuinely hard problems.</p>
+      <div class="contact-list reveal">
+        <a class="contact-row" href="mailto:gabrielbelcastro.contatos@gmail.com">
+          <span style="display:flex;align-items:center;gap:14px;"><span class="ci"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg></span><span class="eyebrow">EMAIL</span></span>
+          <span style="display:flex;align-items:center;gap:10px;"><span class="txt mono" style="font-size:13px;">gabrielbelcastro.contatos@gmail.com</span><span class="cta-arrow">↗</span></span>
+        </a>
+        <a class="contact-row" href="https://wa.me/5521988990516" target="_blank" rel="noopener">
+          <span style="display:flex;align-items:center;gap:14px;"><span class="ci"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M21 11.5a8.5 8.5 0 0 1-12.6 7.4L3 21l2.1-5.4A8.5 8.5 0 1 1 21 11.5z"/></svg></span><span class="eyebrow">WHATSAPP</span></span>
+          <span style="display:flex;align-items:center;gap:10px;"><span class="txt mono" style="font-size:13px;">+55 21 98899-0516</span><span class="cta-arrow">↗</span></span>
+        </a>
+        <a class="contact-row" href="https://www.linkedin.com/in/gabrielbelcastro" target="_blank" rel="noopener">
+          <span style="display:flex;align-items:center;gap:14px;"><span class="ci"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M11 17v-4a2 2 0 0 1 4 0v4M11 17v-7"/></svg></span><span class="eyebrow">LINKEDIN</span></span>
+          <span style="display:flex;align-items:center;gap:10px;"><span class="txt mono" style="font-size:13px;">/in/gabrielbelcastro</span><span class="cta-arrow">↗</span></span>
+        </a>
+        <a class="contact-row" href="https://labsaero.com" target="_blank" rel="noopener">
+          <span style="display:flex;align-items:center;gap:14px;"><span class="ci"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a14 14 0 0 1 0 18M12 3a14 14 0 0 0 0 18"/></svg></span><span class="eyebrow">LABS AERO</span></span>
+          <span style="display:flex;align-items:center;gap:10px;"><span class="txt mono" style="font-size:13px;">labsaero.com</span><span class="cta-arrow">↗</span></span>
+        </a>
+      </div>
+      <button id="copyEmail" class="btn-solid" style="margin-top:24px;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+        <span id="copyLabel">Copy email</span>
+      </button>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="margin-top:96px;border-top:1px solid var(--border);">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between;gap:16px;padding-top:40px;padding-bottom:40px;flex-wrap:wrap;">
+      <div style="display:flex;align-items:center;gap:12px;"><span class="monogram">GB</span><span class="micro">© 2026 Gabriel Belcastro</span></div>
+      <span class="micro faint">BUILT SOLO · ONE HTML FILE · NO FRAMEWORKS</span>
+      <a href="#top" class="micro u-grow">↑ Back to top</a>
+    </div>
+  </footer>
+
+  <style>
+    @media(max-width:767px){ .about-grid{ grid-template-columns:1fr!important; gap:40px!important; } .caps-grid{ grid-template-columns:1fr!important; gap:16px!important; } }
+    @media(max-width:380px){ [data-mock="miles"] .mock > div:last-child > div:last-child{ display:none; } [data-mock="miles"] .mock > div:last-child > div:first-child{ flex:1 0 100%!important; border-right:none!important; } }
+  </style>
+  <noscript><style>.reveal{opacity:1;transform:none}.log-line{opacity:1}.dfill{transform:scaleX(1)!important}.mbar .col{transform:scaleY(1)!important}</style></noscript>
+
+  <script>
+    var nav=document.getElementById('nav'), bar=document.getElementById('scrollBar');
+    function onScroll(){ var y=window.scrollY||document.documentElement.scrollTop; nav.classList.toggle('scrolled',y>30);
+      var h=document.documentElement.scrollHeight-window.innerHeight; bar.style.width=(h>0?(y/h)*100:0)+'%'; }
+    window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+
+    var menuBtn=document.getElementById('menuBtn'), mobileMenu=document.getElementById('mobileMenu');
+    if(menuBtn){ menuBtn.addEventListener('click',function(){ var o=mobileMenu.style.display==='block'; mobileMenu.style.display=o?'none':'block'; menuBtn.setAttribute('aria-expanded',String(!o)); });
+      document.querySelectorAll('.mobile-link').forEach(function(l){ l.addEventListener('click',function(){ mobileMenu.style.display='none'; menuBtn.setAttribute('aria-expanded','false'); }); }); }
+
+    var reduced=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:0.08,rootMargin:'0px 0px 80px 0px'});
+    var revealEls=document.querySelectorAll('.reveal'); revealEls.forEach(function(el){ io.observe(el); });
+    requestAnimationFrame(function(){ var vh=window.innerHeight; revealEls.forEach(function(el){ if(el.getBoundingClientRect().top<vh+80) el.classList.add('in'); }); });
+    setTimeout(function(){ document.querySelectorAll('.reveal:not(.in)').forEach(function(el){ el.classList.add('in'); }); },2500);
+
+    window.addEventListener('load',function(){ document.querySelectorAll('.hl-line').forEach(function(el,i){ el.style.opacity=0; el.style.transform='translateY(6px)'; el.style.transition='opacity .6s var(--ease), transform .6s var(--ease)'; setTimeout(function(){ el.style.opacity=1; el.style.transform='none'; },120+i*90); }); });
+
+    function easeOutExpo(t){ return t===1?1:1-Math.pow(2,-10*t); }
+    function runCount(el){ var target=parseFloat(el.dataset.target), pre=el.dataset.prefix||'', suf=el.dataset.suffix||'';
+      if(reduced){ el.textContent=pre+target+suf; return; } var dur=900,start=null;
+      function step(ts){ if(!start)start=ts; var p=Math.min((ts-start)/dur,1); el.textContent=pre+Math.round(easeOutExpo(p)*target)+suf; if(p<1)requestAnimationFrame(step); } requestAnimationFrame(step); }
+    var countIO=new IntersectionObserver(function(es){ es.forEach(function(e,i){ if(e.isIntersecting){ setTimeout(function(){ runCount(e.target); },i*120); countIO.unobserve(e.target); } }); },{threshold:0.5});
+    document.querySelectorAll('.count').forEach(function(el){ countIO.observe(el); });
+
+    // data bars (fill on view)
+    var barIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting)return; var p=e.target;
+      p.querySelectorAll('.dfill').forEach(function(f){ f.style.transform='scaleX('+((f.dataset.w||0)/100)+')'; });
+      p.querySelectorAll('.mbar .col').forEach(function(c){ c.style.transform='scaleY(1)'; });
+      barIO.unobserve(p); }); },{threshold:0.3});
+    document.querySelectorAll('.panel, #monthBars').forEach(function(el){ barIO.observe(el); });
+
+    var mockIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting)return; var w=e.target;
+      if(w.dataset.mock==='miles'){ var ls=w.querySelectorAll('.log-line'); if(reduced){ ls.forEach(function(l){l.classList.add('in');}); } else { ls.forEach(function(l,i){ setTimeout(function(){ l.classList.add('in'); },i*120); }); } }
+      mockIO.unobserve(w); }); },{threshold:0.4});
+    document.querySelectorAll('[data-mock]').forEach(function(el){ mockIO.observe(el); });
+
+    var tabs=document.querySelectorAll('.ftab'), rows=document.querySelectorAll('#ledger .ledger-row');
+    tabs.forEach(function(t){ t.addEventListener('click',function(){ tabs.forEach(function(x){x.classList.remove('active');}); t.classList.add('active');
+      var f=t.dataset.filter; rows.forEach(function(r){ r.style.display=(f==='all'||r.dataset.cat===f)?'':'none'; }); }); });
+
+    var copyBtn=document.getElementById('copyEmail'), copyLabel=document.getElementById('copyLabel');
+    if(copyBtn){ copyBtn.addEventListener('click',function(){ var email='gabrielbelcastro.contatos@gmail.com';
+      function done(){ copyLabel.textContent='Copied ✓'; setTimeout(function(){ copyLabel.textContent='Copy email'; },1600); }
+      if(navigator.clipboard&&navigator.clipboard.writeText){ navigator.clipboard.writeText(email).then(done).catch(fb); } else { fb(); }
+      function fb(){ try{ var ta=document.createElement('textarea'); ta.value=email; ta.style.position='fixed'; ta.style.opacity='0'; document.body.appendChild(ta); ta.select(); document.execCommand('copy'); document.body.removeChild(ta); done(); }catch(e){ window.location.href='mailto:'+email; } } }); }
+
+    var navLinks=document.querySelectorAll('.nav-link');
+    var secIO=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ navLinks.forEach(function(l){ l.classList.toggle('is-active',l.dataset.sec===e.target.id); }); } }); },{threshold:0.4});
+    ['work','data','about','contact'].forEach(function(id){ var s=document.getElementById(id); if(s)secIO.observe(s); });
+
+    // social chips placeholder handler (Instagram/Facebook handles pending)
+    document.querySelectorAll('[data-social]').forEach(function(c){ c.style.cursor='default'; c.title='handle pending'; });
+  </script>
+</body>
+</html>
