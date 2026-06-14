@@ -47,25 +47,32 @@
   .accent{ color:var(--accent); }
 
   /* NAV */
-  nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.82); backdrop-filter:blur(12px); border-bottom:1px solid var(--line); }
-  .nav-in{ display:flex; align-items:center; gap:20px; height:64px; }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; color:var(--ink); }
-  .brand .mark{ width:30px; height:30px; border-radius:8px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:13px; font-weight:700; letter-spacing:-.02em; }
-  .nav-links{ display:flex; align-items:center; gap:26px; margin-left:auto; }
-  .nav-links a{ font-size:14px; font-weight:500; color:var(--text); transition:color var(--t); }
-  .nav-links a:hover{ color:var(--ink); }
-  .lang-btn{ display:inline-flex; gap:5px; align-items:center; font-size:13px; font-weight:600; background:var(--bg-2); border:1px solid var(--line); border-radius:999px; padding:6px 12px; cursor:pointer; font-family:inherit; }
+  nav{ position:sticky; top:0; z-index:50; background:rgba(255,255,255,.72); backdrop-filter:saturate(180%) blur(14px); border-bottom:1px solid var(--line); transition:box-shadow var(--t), background var(--t); }
+  nav.scrolled{ background:rgba(255,255,255,.88); box-shadow:0 8px 28px rgba(16,24,40,.07); }
+  .nav-in{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:16px; height:66px; }
+  .brand{ justify-self:start; display:flex; align-items:center; gap:11px; font-weight:700; font-size:15px; color:var(--ink); letter-spacing:-.01em; }
+  .brand .mark{ width:32px; height:32px; border-radius:9px; background:var(--ink); color:#fff; display:grid; place-items:center; font-size:12.5px; font-weight:700; }
+  .brand .avail{ width:7px; height:7px; border-radius:50%; background:var(--success); box-shadow:0 0 0 3px var(--success-soft); }
+  .nav-center{ justify-self:center; display:flex; align-items:center; gap:2px; }
+  .nav-center a{ font-size:14px; font-weight:500; color:var(--text); padding:8px 14px; border-radius:9px; transition:color var(--t), background var(--t); }
+  .nav-center a:hover{ color:var(--ink); background:var(--bg-2); }
+  .nav-center a.active{ color:var(--accent); }
+  .nav-actions{ justify-self:end; display:flex; align-items:center; gap:12px; }
+  .lang-btn{ display:inline-flex; gap:5px; align-items:center; font-size:12.5px; font-weight:600; background:var(--bg-2); border:1px solid var(--line); border-radius:999px; padding:6px 11px; cursor:pointer; font-family:inherit; transition:border-color var(--t); }
+  .lang-btn:hover{ border-color:var(--line-2); }
   .lang-btn .l-en{ color:var(--accent); } .lang-btn .l-pt{ color:var(--faint); } .lang-btn .sep{ color:var(--faint); }
   .btn{ display:inline-flex; align-items:center; gap:8px; font-size:14px; font-weight:600; border-radius:10px; padding:10px 18px; cursor:pointer; transition:all var(--t); border:1px solid transparent; font-family:inherit; }
+  .btn-sm{ padding:8px 16px; font-size:13.5px; }
   .btn-solid{ background:var(--accent); color:#fff; box-shadow:0 1px 2px rgba(44,83,240,.25); }
   .btn-solid:hover{ background:var(--accent-700); transform:translateY(-1px); }
   .btn-ghost{ background:var(--surface); color:var(--ink); border-color:var(--line-2); }
   .btn-ghost:hover{ border-color:var(--ink); }
-  .menu-btn{ display:none; margin-left:auto; background:none; border:1px solid var(--line-2); border-radius:8px; padding:8px; cursor:pointer; }
+  .menu-btn{ display:none; justify-self:end; background:none; border:1px solid var(--line-2); border-radius:9px; padding:8px; cursor:pointer; color:var(--ink); }
   .menu-btn svg{ display:block; }
-  #mobileMenu{ display:none; flex-direction:column; gap:4px; padding:12px 24px 20px; border-bottom:1px solid var(--line); background:var(--bg); }
-  #mobileMenu a{ padding:10px 0; font-weight:500; border-bottom:1px solid var(--line); }
-  @media(max-width:760px){ .nav-links{ display:none; } .menu-btn{ display:inline-flex; } }
+  #mobileMenu{ display:none; flex-direction:column; gap:2px; padding:10px 24px 18px; border-bottom:1px solid var(--line); background:var(--bg); }
+  #mobileMenu a.m-link{ padding:12px 0; font-weight:500; border-bottom:1px solid var(--line); }
+  .m-foot{ display:flex; align-items:center; gap:12px; margin-top:14px; }
+  @media(max-width:820px){ .nav-in{ grid-template-columns:1fr auto; } .nav-center,.nav-actions{ display:none; } .menu-btn{ display:inline-flex; } }
 
   /* HERO */
   .hero{ position:relative; overflow:hidden; }
@@ -174,15 +181,17 @@
 <body>
 
 <!-- NAV -->
-<nav>
+<nav id="nav">
   <div class="wrap nav-in">
-    <a href="#top" class="brand"><span class="mark">GB</span><span>Gabriel Belcastro</span></a>
-    <div class="nav-links">
-      <a href="#work" data-pt="Projetos">Projects</a>
-      <a href="#about" data-pt="Sobre">About</a>
-      <a href="#numbers" data-pt="Números">Numbers</a>
+    <a href="#top" class="brand"><span class="mark">GB</span><span>Gabriel Belcastro</span><span class="avail" title="Disponível para trabalho remoto"></span></a>
+    <div class="nav-center">
+      <a href="#work" class="nav-link" data-sec="work" data-pt="Projetos">Projects</a>
+      <a href="#about" class="nav-link" data-sec="about" data-pt="Sobre">About</a>
+      <a href="#numbers" class="nav-link" data-sec="numbers" data-pt="Números">Numbers</a>
+    </div>
+    <div class="nav-actions">
       <button class="lang-btn" data-lang-btn aria-label="Language / Idioma"><span class="l-en">EN</span><span class="sep">/</span><span class="l-pt">PT</span></button>
-      <a href="#contact" class="btn btn-solid" data-pt="Contato">Contact</a>
+      <a href="#contact" class="btn btn-solid btn-sm" data-pt="Falar comigo">Get in touch</a>
     </div>
     <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
@@ -192,7 +201,10 @@
     <a href="#work" class="m-link" data-pt="Projetos">Projects</a>
     <a href="#about" class="m-link" data-pt="Sobre">About</a>
     <a href="#numbers" class="m-link" data-pt="Números">Numbers</a>
-    <a href="#contact" class="m-link" data-pt="Contato">Contact</a>
+    <div class="m-foot">
+      <button class="lang-btn" data-lang-btn aria-label="Language / Idioma"><span class="l-en">EN</span><span class="sep">/</span><span class="l-pt">PT</span></button>
+      <a href="#contact" class="btn btn-solid btn-sm m-link" data-pt="Falar comigo">Get in touch</a>
+    </div>
   </div>
 </nav>
 
@@ -200,8 +212,8 @@
 <header id="top" class="hero">
   <div class="wrap hero-in">
     <span class="chip"><span class="dot live"></span><span data-pt="Disponível para trabalho remoto">Available for remote work</span></span>
-    <h1 class="title reveal" data-pt="Eu uso IA para automatizar operações e economizar horas de trabalho.">I use AI to automate operations and save hours of work.</h1>
-    <p class="lead reveal" data-pt="Comecei como emissor de passagens e virei construtor de IA. Hoje crio ferramentas que fazem o trabalho repetitivo sozinhas, do início ao fim.">I started as a flight-ticket agent and became an AI builder. Today I create tools that handle repetitive work end to end, on their own.</p>
+    <h1 class="title reveal" data-pt="Fui emissor de passagens. Hoje construo a IA que faz o trabalho.">I was a flight-ticket agent. Now I build the AI that does the work.</h1>
+    <p class="lead reveal" data-pt="Passei dois anos num balcão de milhas, emitindo cerca de 600 passagens por mês. Aprendi sozinho a construir com IA, cortei meu tempo de trabalho pela metade e transformei isso em produtos de verdade. Hoje toco tudo sozinho, com a IA como meu time.">I spent two years at a miles desk, issuing around 600 tickets a month. I taught myself to build with AI, cut my own handling time in half, and turned that into real products. Today I run it all solo, with AI as my team.</p>
     <div class="hero-cta reveal">
       <a href="#work" class="btn btn-solid" data-pt="Ver projetos">See projects</a>
       <a href="#contact" class="btn btn-ghost" data-pt="Falar comigo">Get in touch</a>
@@ -223,7 +235,7 @@
     <div class="sec-head reveal">
       <div>
         <span class="eyebrow" data-pt="Principais projetos">Featured projects</span>
-        <h2 data-pt="O que eu construí">What I've built</h2>
+        <h2 data-pt="Três produtos no ar, nascidos do problema que eu vivia todo dia">Three live products, born from the problem I lived every day</h2>
       </div>
     </div>
     <div class="feat">
@@ -234,7 +246,7 @@
         <div class="card-body">
           <div class="pill-row"><span class="pill live-pill"><span class="dot"></span><span data-pt="No ar">Live</span></span><span class="pill" data-pt="Minha empresa">My company</span></div>
           <h3>Labs Aero <span class="accent">↗</span></h3>
-          <p class="desc" data-pt="Minha marca própria: um conjunto de ferramentas de IA para o mercado de milhas, com site, newsletter e cinco produtos.">My own brand: a suite of AI tools for the airline-miles market, with a website, newsletter and five products.</p>
+          <p class="desc" data-pt="Minha empresa própria. Um conjunto de ferramentas de IA para o mercado de milhas, com site, newsletter e cinco produtos. No ar.">My own company. A suite of AI tools for the airline-miles market, with a website, a newsletter and five products. Live.</p>
           <div class="tags"><span class="tag" data-pt="Fundador">Founder</span><span class="tag">5 <span data-pt="produtos">products</span></span><span class="tag">IA</span></div>
           <div class="card-foot"><span class="card-link">labsaero.com</span></div>
         </div>
@@ -246,7 +258,7 @@
         <div class="card-body">
           <div class="pill-row"><span class="pill live-pill"><span class="dot"></span><span data-pt="Em produção">In production</span></span></div>
           <h3>Miles Terminal</h3>
-          <p class="desc" data-pt="Um painel que reúne a operação de milhas de várias companhias. Lê os bilhetes sozinho e mostra o desempenho de cada emissor.">A panel that brings together miles operations across airlines. It reads tickets on its own and shows each agent's performance.</p>
+          <p class="desc" data-pt="Um painel que reúne a operação de milhas de várias companhias. Lê os bilhetes sozinho com IA e mostra o desempenho de cada emissor num só lugar. Em produção.">A dashboard that unifies miles operations across airlines. It reads tickets on its own with AI and shows each agent's performance in one place. In production.</p>
           <div class="tags"><span class="tag" data-pt="Automação">Automation</span><span class="tag" data-pt="Leitura por IA">AI reading</span><span class="tag">Dashboard</span></div>
           <div class="card-foot"><span class="card-link" data-pt="Em produção interna">Internal production</span></div>
         </div>
@@ -258,7 +270,7 @@
         <div class="card-body">
           <div class="pill-row"><span class="pill live-pill"><span class="dot"></span><span data-pt="Clientes pagantes">Paying users</span></span><span class="pill">SaaS</span></div>
           <h3>Capturador Smiles <span class="accent">↗</span></h3>
-          <p class="desc" data-pt="Uma extensão que virou produto pago. Organiza contas de milhas com segurança, com login único e cobrança por assinatura.">An extension that became a paid product. It organizes miles accounts securely, with a single login and subscription billing.</p>
+          <p class="desc" data-pt="Uma extensão do Chrome que virou produto pago, com clientes ativos. Organiza contas de milhas com segurança, com login único e assinatura de R$ 18,99 por mês.">A Chrome extension that became a paid product, with active users. It organizes miles accounts securely, with a single login and a R$ 18,99 per month subscription.</p>
           <div class="tags"><span class="tag" data-pt="Produto">Product</span><span class="tag" data-pt="Assinatura">Subscription</span><span class="tag" data-pt="Segurança">Security</span></div>
           <div class="card-foot"><span class="card-link">R$ 18,99/<span data-pt="mês">mo</span></span></div>
         </div>
@@ -275,7 +287,7 @@
       <div>
         <span class="eyebrow" data-pt="Outros trabalhos">More work</span>
         <h2 data-pt="Mais projetos">More projects</h2>
-        <p data-pt="Uma seleção entre ferramentas, extensões e sites que entreguei.">A selection of the tools, extensions and websites I've shipped.</p>
+        <p data-pt="Uma seleção entre as ferramentas, extensões e sites que entreguei.">A selection of the tools, extensions and websites I have shipped.</p>
       </div>
     </div>
     <div class="grid2">
@@ -320,7 +332,7 @@
   <div class="wrap about">
     <div class="reveal">
       <span class="eyebrow" data-pt="Sobre">About</span>
-      <h2 data-pt="Construo IA, não só uso.">I build with AI, not just use it.</h2>
+      <h2 data-pt="Construo com IA, não só uso.">I build with AI, not just use it.</h2>
       <div class="facts">
         <div class="fact"><span class="k" data-pt="Função">Role</span><span class="v" data-pt="Emissor sênior · fundador da Labs Aero">Senior agent · founder of Labs Aero</span></div>
         <div class="fact"><span class="k" data-pt="Local">Based in</span><span class="v">Rio de Janeiro, BR</span></div>
@@ -329,8 +341,8 @@
       </div>
     </div>
     <div class="reveal">
-      <p><span data-pt="Passei dois anos numa operação de alto volume: ">I spent two years in a high-volume operation: </span><span class="hl" data-pt="600 emissões por mês">600 tickets a month</span><span data-pt=" e treinamento de cerca de 50 emissores. Por isso sei exatamente onde o tempo é perdido e o que dá pra automatizar.">, and trained around 50 agents. So I know exactly where time is lost and what can be automated.</span></p>
-      <p><span data-pt="Então comecei a construir. Coloquei a IA no meu dia a dia e cortei o tempo de atendimento pela metade. Depois fundei a ">Then I started building. I put AI into my daily work and cut handling time in half. Then I founded </span><span class="hl">Labs Aero</span><span data-pt=" e entreguei 789 commits em 11 projetos em quatro meses: painéis, extensões, automações e sites no ar.">  and shipped 789 commits across 11 projects in four months: dashboards, extensions, automations and live websites.</span></p>
+      <p data-pt="Sou do Rio de Janeiro. Passei cerca de dois anos numa operação de alto volume: 600 emissões por mês e treinamento de uns 50 colegas até chegar a sênior. Por isso sei exatamente onde o tempo é perdido e o que dá pra automatizar.">I'm from Rio de Janeiro. I spent about two years in a high-volume operation: 600 tickets a month and training around 50 colleagues on my way to a senior role. So I know exactly where time is lost and what can be automated.</p>
+      <p data-pt="Então comecei a construir. Coloquei a IA no meu dia a dia, cortei o tempo de atendimento pela metade e fundei a Labs Aero. Em quatro meses entreguei 789 commits em 11 projetos: painéis, extensões, automações e sites no ar.">So I started building. I put AI into my daily work, cut handling time in half, and founded Labs Aero. In four months I shipped 789 commits across 11 projects: dashboards, extensions, automations and live websites.</p>
       <p data-pt="Trabalho como uma empresa de uma pessoa só, e a IA é o meu time.">I work like a one-person company, and AI is my team.</p>
     </div>
   </div>
@@ -342,8 +354,8 @@
     <div class="sec-head reveal">
       <div>
         <span class="eyebrow" data-pt="Em números">In numbers</span>
-        <h2 data-pt="Quatro meses de trabalho">Four months of work</h2>
-        <p data-pt="Dados reais dos meus repositórios no GitHub (mar–jun 2026).">Real data from my GitHub repositories (Mar–Jun 2026).</p>
+        <h2 data-pt="Os números">The numbers</h2>
+        <p data-pt="600 passagens por mês no balcão, 50 colegas treinados, 50% menos tempo por emissão e 789 commits em 11 projetos no GitHub em quatro meses (mar a jun de 2026).">600 tickets a month at the desk, 50 colleagues trained, 50% less time per ticket, and 789 commits across 11 GitHub projects in four months (Mar to Jun 2026).</p>
       </div>
     </div>
     <div class="bigstat reveal">
@@ -367,7 +379,7 @@
   <div class="wrap">
     <span class="eyebrow reveal" data-pt="Contato">Contact</span>
     <h2 class="reveal" data-pt="Vamos conversar.">Let's talk.</h2>
-    <p class="reveal" data-pt="Aberto a vagas remotas e projetos com IA e automação.">Open to remote roles and projects in AI and automation.</p>
+    <p class="reveal" data-pt="Aberto a vagas remotas e projetos freelance em IA e automação. Me manda uma mensagem.">Open to remote roles and freelance projects in AI and automation. Send me a message.</p>
     <div class="contact-cta reveal">
       <button class="btn btn-solid copy-btn" id="copyEmail"><span id="copyLabel" data-pt="Copiar e-mail">Copy email</span></button>
       <a href="https://www.linkedin.com/in/gabrielbelcastro" target="_blank" rel="noopener" class="btn btn-ghost">LinkedIn</a>
@@ -411,6 +423,16 @@
     var mb=document.getElementById('menuBtn'), mm=document.getElementById('mobileMenu');
     if(mb){ mb.addEventListener('click',function(){ var open=mm.style.display==='flex'; mm.style.display=open?'none':'flex'; mb.setAttribute('aria-expanded',String(!open)); }); }
     document.querySelectorAll('.m-link').forEach(function(l){ l.addEventListener('click',function(){ mm.style.display='none'; mb.setAttribute('aria-expanded','false'); }); });
+
+    // nav scroll shadow
+    var navEl=document.getElementById('nav');
+    function onScroll(){ if(navEl) navEl.classList.toggle('scrolled', window.scrollY>8); }
+    window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+    // active section link
+    var links=document.querySelectorAll('.nav-link');
+    var sio=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(l){ l.classList.toggle('active', l.dataset.sec===e.target.id); }); } }); },{threshold:.4});
+    ['work','about','numbers'].forEach(function(id){ var s=document.getElementById(id); if(s) sio.observe(s); });
 
     // reveal
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.12, rootMargin:'0px 0px -40px 0px'});
