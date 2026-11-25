@@ -5,102 +5,119 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Capturador Azul · Gabriel Belcastro</title>
 <meta name="description" content="Capturador Azul — Equipe: a extensão do Chrome que a equipe de emissores da Domus usa no site da Azul. Projeto de Gabriel Belcastro." />
-<link rel="canonical" href="https://portfolio.labsaero.com/capturador-azul.html" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121316'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E" />
+<link rel="canonical" href="https://gabrielbelcastro.labsaero.com/capturador-azul.html" />
+<meta name="theme-color" content="#111214" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23111214'/%3E%3Ctext x='16' y='22' font-family='Arial Narrow,Arial,sans-serif' font-size='15' font-weight='700' fill='%23FFC629' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://portfolio.labsaero.com/capturador-azul.html" />
+<meta property="og:url" content="https://gabrielbelcastro.labsaero.com/capturador-azul.html" />
 <meta property="og:title" content="Capturador Azul · Gabriel Belcastro" />
 <meta property="og:description" content="A extensão do Chrome da equipe de emissores da Domus no site da Azul." />
 <meta property="og:image" content="https://portfolio.labsaero.com/screenshots/capturador-azul-painel.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --paper:#F7F5F0; --paper-2:#EFEBE2; --card:#FFFFFF; --ink:#121316; --text:#383B42; --muted:#6B6F78; --faint:#9A9DA4;
-    --line:#E2DED4; --line-2:#D3CEC2; --accent:#C23B12; --accent-soft:#FBE9E1; --live:#13865A; --live-soft:#E2F3EA; --azul:#0B7FB5;
-    --r:18px; --shadow:0 1px 2px rgba(18,19,22,.05), 0 10px 30px rgba(18,19,22,.06); --t:.22s cubic-bezier(.4,0,.2,1); --maxw:1040px;
-    --display:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif; --body:"Instrument Sans",system-ui,sans-serif; --mono:"Geist Mono",ui-monospace,monospace;
+    --ground:#E4E6E3; --ground-2:#D7DAD6; --paper:#F4F5F3; --sign:#111214; --sign-2:#1D1F23; --sign-line:#33363C;
+    --yellow:#FFC629; --yellow-2:#FFD55C; --ink:#111214; --text:#2A2D31; --muted:#565B62; --rule:#AEB2AD;
+    --on-sign:#ECEDEE; --on-sign-muted:#A9AEB5;
+    --cond:"Barlow Condensed","Arial Narrow",sans-serif; --body:"Barlow","Segoe UI",sans-serif; --maxw:1120px; --ease:cubic-bezier(.16,1,.3,1);
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:var(--body); background:var(--paper); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  html{ scrollbar-color:var(--sign) var(--ground-2); }
+  body{ font-family:var(--body); font-size:17px; background:var(--ground); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection{ background:var(--yellow); color:var(--ink); }
   a{ color:inherit; text-decoration:none; }
-  img{ display:block; max-width:100%; }
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-  @media(max-width:520px){ .wrap{ padding:0 16px; } }
-  h1,h2,h3{ color:var(--ink); font-family:var(--display); line-height:1.1; letter-spacing:-.025em; font-weight:700; }
-  .eyebrow{ font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
-  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
-  nav{ position:sticky; top:0; z-index:50; background:rgba(247,245,240,.9); backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px); border-bottom:1px solid var(--line); }
-  .nav-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:62px; }
-  .back{ font-size:14px; font-weight:600; color:var(--muted); display:inline-flex; gap:8px; align-items:center; transition:color var(--t); }
-  .back:hover{ color:var(--accent); }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; color:var(--ink); }
-  .brand .mark{ width:30px; height:30px; border-radius:9px; background:var(--ink); color:#fff; display:grid; place-items:center; font-family:var(--display); font-size:12px; }
-  .lang-btn{ display:inline-flex; gap:5px; align-items:center; font-family:var(--mono); font-size:12px; background:transparent; border:1px solid var(--line-2); border-radius:999px; padding:6px 11px; cursor:pointer; color:var(--faint); }
-  .lang-btn:hover{ border-color:var(--ink); }
-  .lang-btn .l-en,.lang-btn .l-pt,.lang-btn .sep{ color:var(--faint); }
-  .hero{ padding:60px 0 40px; }
-  .pills{ display:flex; flex-wrap:wrap; gap:8px; }
-  .pill{ font-size:12px; font-weight:600; padding:4px 11px; border-radius:999px; background:var(--card); color:var(--muted); border:1px solid var(--line); }
-  .pill.live{ color:var(--live); background:var(--live-soft); border-color:#C7E7D6; }
-  h1{ font-size:clamp(34px,5vw,54px); font-weight:750; margin-top:18px; letter-spacing:-.035em; }
-  .lead{ font-size:clamp(16.5px,2vw,19px); max-width:64ch; margin-top:16px; }
-  .shots{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:40px; }
-  @media(max-width:720px){ .shots{ grid-template-columns:1fr; } }
-  figure{ background:#E8ECF3; border:1px solid var(--line); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow); }
-  figure img{ width:100%; height:auto; aspect-ratio:1280/800; object-fit:cover; }
-  figcaption{ background:var(--card); border-top:1px solid var(--line); padding:12px 16px; font-size:13px; color:var(--muted); }
-  .sec{ padding:56px 0; }
-  .sec h2{ font-size:clamp(24px,3.2vw,32px); margin:10px 0 24px; }
-  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  @media(max-width:820px){ .grid3{ grid-template-columns:1fr; } }
-  .box{ border:1px solid var(--line); border-radius:var(--r); padding:22px; background:var(--card); }
-  .box h3{ font-size:18px; margin-bottom:8px; }
-  .box p{ font-size:14.5px; }
-  .num{ font-family:var(--mono); font-size:13px; color:var(--azul); font-weight:500; display:block; margin-bottom:10px; }
-  .facts{ border:1px solid var(--line-2); border-radius:var(--r); overflow:hidden; background:var(--card); }
-  .fact{ display:flex; justify-content:space-between; gap:16px; padding:14px 18px; border-bottom:1px solid var(--line); font-size:14px; }
-  .fact:last-child{ border-bottom:0; }
-  .fact .k{ color:var(--muted); flex:0 0 auto; } .fact .v{ color:var(--ink); font-weight:600; text-align:right; }
-  .note{ font-size:13px; color:var(--muted); margin-top:14px; }
-  .cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
-  .btn{ display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:600; border-radius:11px; padding:11px 19px; border:1px solid transparent; transition:background var(--t), border-color var(--t); }
-  .btn-solid{ background:var(--ink); color:#fff; } .btn-solid:hover{ background:#000; }
-  .btn-ghost{ background:var(--card); color:var(--ink); border-color:var(--line-2); } .btn-ghost:hover{ border-color:var(--ink); }
-  @media(max-width:560px){
-    .brand span:last-child{ display:none; }
-    .fact{ flex-direction:column; gap:2px; } .fact .v{ text-align:left; }
-  }
-  footer{ border-top:1px solid var(--line); padding:26px 0; font-size:13px; color:var(--muted); }
-  footer a:hover{ color:var(--ink); }
+  img{ display:block; max-width:100%; height:auto; }
+  button{ font:inherit; color:inherit; }
+  svg{ display:block; flex:0 0 auto; }
+  :focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
+  .band :focus-visible, footer :focus-visible{ outline-color:var(--yellow); }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+  @media(max-width:600px){ .wrap{ padding:0 16px; } body{ font-size:16px; } }
+  h1,h2,h3{ font-family:var(--cond); color:var(--ink); line-height:1; font-weight:800; text-wrap:balance; }
+  p{ text-wrap:pretty; }
+  .arw{ transition:transform .25s var(--ease); }
+  a:hover .arw{ transform:translateX(3px); }
+  a:hover .arw.back{ transform:translateX(-3px); }
+  .band{ position:sticky; top:0; z-index:50; background:var(--sign); color:var(--on-sign); }
+  .band-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:60px; }
+  .back{ display:inline-flex; align-items:center; gap:8px; font-family:var(--cond); font-weight:600; font-size:19px; color:var(--on-sign); }
+  .back:hover{ color:var(--yellow); }
+  .who{ display:flex; align-items:center; gap:10px; font-family:var(--cond); font-weight:700; font-size:20px; color:#fff; }
+  .who .tile{ width:32px; height:32px; background:var(--yellow); color:var(--ink); display:grid; place-items:center; border-radius:3px; font-size:15px; font-weight:800; }
+  .lang{ background:none; border:0; cursor:pointer; font-family:var(--cond); font-weight:600; font-size:17px; letter-spacing:.04em; color:var(--on-sign-muted); padding:8px 4px; }
+  .lang b{ font-weight:600; }
+  .lang .on{ color:#fff; text-decoration:underline; text-decoration-color:var(--yellow); text-decoration-thickness:2px; text-underline-offset:6px; }
+  @media(max-width:560px){ .who span:last-child{ display:none; } }
+  .hero{ padding:56px 0 0; }
+  .hero h1{ font-size:clamp(52px,8vw,96px); line-height:.95; }
+  .kind{ font-family:var(--cond); font-weight:600; font-size:19px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:12px; }
+  .lead{ font-size:clamp(18px,1.9vw,21px); max-width:64ch; margin-top:22px; }
+  .frame{ background:var(--sign); border-radius:6px; padding:10px; margin-top:36px; }
+  .frame img{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:3px; }
+  .frame figcaption{ padding:12px 6px 4px; color:var(--on-sign-muted); font-size:15px; }
+  .sec{ padding:96px 0 0; }
+  @media(max-width:600px){ .sec{ padding-top:72px; } }
+  .sec h2{ font-size:clamp(36px,4.6vw,56px); padding-bottom:20px; border-bottom:4px solid var(--ink); }
+  .mod{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:32px; padding:28px 0; border-bottom:1px solid var(--rule); align-items:center; }
+  @media(max-width:800px){ .mod{ grid-template-columns:1fr; gap:16px; } }
+  .mod .shot{ background:var(--sign); border-radius:4px; overflow:hidden; }
+  .mod .shot img{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; }
+  .mod h3{ font-size:clamp(28px,3vw,36px); }
+  .mod .k{ font-family:var(--cond); font-weight:600; font-size:16px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:6px; }
+  .mod p{ margin-top:10px; max-width:60ch; }
+  .note{ font-size:15px; color:var(--muted); margin-top:18px; max-width:72ch; }
+  table.facts{ width:100%; border-collapse:separate; border-spacing:0; background:var(--paper); border:2px solid var(--ink); border-radius:6px; margin-top:28px; }
+  table.facts th, table.facts td{ text-align:left; vertical-align:top; padding:13px 18px; border-bottom:1px solid var(--rule); font-size:16px; }
+  table.facts tr:last-child th, table.facts tr:last-child td{ border-bottom:0; }
+  table.facts th{ font-weight:500; color:var(--muted); width:30%; }
+  table.facts td{ font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums; }
+  @media(max-width:560px){ table.facts th, table.facts td{ display:block; width:auto; } table.facts th{ border-bottom:0; padding-bottom:0; } }
+  .cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .sign-btn{ display:inline-flex; align-items:center; gap:10px; background:var(--yellow); color:var(--ink); font-family:var(--cond); font-weight:700; font-size:19px; padding:9px 16px; border-radius:3px; transition:background .2s; }
+  .sign-btn:hover{ background:var(--yellow-2); }
+  .btn-line{ display:inline-flex; align-items:center; gap:10px; font-family:var(--cond); font-weight:700; font-size:19px; padding:7px 14px; border:2px solid var(--ink); border-radius:3px; color:var(--ink); transition:background .2s, color .2s; }
+  .btn-line:hover{ background:var(--ink); color:var(--yellow); }
+  footer{ margin-top:96px; background:var(--sign); color:var(--on-sign-muted); padding:22px 0; font-size:15px; }
+  footer a:hover{ color:#fff; }
+  @media(prefers-reduced-motion:reduce){ .arw{ transition:none; } }
+  .pair{ display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-top:36px; }
+  @media(max-width:760px){ .pair{ grid-template-columns:1fr; } }
+  .pair .frame{ margin-top:0; }
+  .pair .frame img{ aspect-ratio:1280/800; }
+  .job{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:12px 32px; padding:24px 0; border-bottom:1px solid var(--rule); }
+  @media(max-width:760px){ .job{ grid-template-columns:1fr; } }
+  .job h3{ font-size:clamp(26px,2.6vw,32px); font-weight:700; }
+  .job p{ max-width:60ch; }
 </style>
 </head>
 <body>
-<nav>
-  <div class="wrap nav-in">
-    <a href="./#domus" class="back">← <span data-pt="Voltar ao portfólio">Back to portfolio</span></a>
-    <a href="./" class="brand"><span class="mark">GB</span><span>Gabriel Belcastro</span></a>
-    <button class="lang-btn" data-lang-btn aria-label="Language / Idioma"><span class="l-en">EN</span><span class="sep">/</span><span class="l-pt">PT</span></button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+</defs></svg>
+
+<nav class="band">
+  <div class="wrap band-in">
+    <a href="./#domus" class="back"><svg class="arw back" width="18" height="18"><use href="#i-left"/></svg><span data-pt="Voltar ao portfólio">Back to portfolio</span></a>
+    <a href="./" class="who"><span class="tile">GB</span><span>Gabriel Belcastro</span></a>
+    <button class="lang" type="button" data-lang-btn aria-label="Language / Idioma"><b class="l-en">EN</b> / <b class="l-pt">PT</b></button>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="pills">
-      <span class="pill live" data-pt="Em uso pela equipe">Used by the team</span>
-      <span class="pill" data-pt="Extensão do Chrome">Chrome extension</span>
-      <span class="pill" data-pt="Projeto Domus">Domus project</span>
-    </div>
     <h1>Capturador Azul — <span data-pt="Equipe">Team</span></h1>
+    <p class="kind" data-pt="Extensão do Chrome · em uso pela equipe · projeto Domus">Chrome extension · used by the team · Domus project</p>
     <p class="lead" data-pt="A extensão que os emissores da Domus usam no site da Azul. Ela mostra a cada pessoa as contas do seu grupo de trabalho, registra os pontos e as taxas de cada busca de voo e já calcula o preço de venda por trecho e o de Pontos + Dinheiro. Começou como a versão Azul do Capturador Smiles e virou ferramenta da equipe, com acesso individual.">The extension Domus's ticketing team uses on the Azul website. It shows each person the accounts in their work group, records the points and fees of every flight search and prices each leg and the Points + Cash fare on the spot. It started as the Azul version of Capturador Smiles and became a team tool, with individual access.</p>
-    <div class="shots">
-      <figure>
-        <img src="screenshots/capturador-azul-painel.jpg" alt="Painel lateral do Capturador Azul na busca de voo" />
+    <div class="pair">
+      <figure class="frame">
+        <img src="screenshots/capturador-azul-painel.jpg" alt="Painel lateral do Capturador Azul na busca de voo" width="1280" height="800" />
         <figcaption data-pt="O painel lateral durante uma busca: localizador, milhas, taxas, milheiro de custo e de venda, preço por trecho e Pontos + Dinheiro.">The side panel during a search: booking code, miles, fees, cost and sale price per thousand miles, price per leg and Points + Cash.</figcaption>
       </figure>
-      <figure>
-        <img src="screenshots/capturador-azul-contas.jpg" alt="Lista de contas do grupo no Capturador Azul" />
+      <figure class="frame">
+        <img src="screenshots/capturador-azul-contas.jpg" alt="Lista de contas do grupo no Capturador Azul" width="1280" height="800" />
         <figcaption data-pt="As contas do grupo da pessoa, com titular, login, saldo e custo. Dados de exemplo.">The person's account group, with holder, login, balance and cost. Sample data.</figcaption>
       </figure>
     </div>
@@ -109,49 +126,42 @@
 
 <section class="sec">
   <div class="wrap">
-    <span class="eyebrow" data-pt="O que ela faz">What it does</span>
     <h2 data-pt="Três trabalhos que o emissor fazia na mão">Three jobs the ticketing agent used to do by hand</h2>
-    <div class="grid3">
-      <div class="box">
-        <span class="num">01</span>
-        <h3 data-pt="Contas do grupo, sem planilha">Group accounts, no spreadsheet</h3>
-        <p data-pt="Cada pessoa vê só as contas do seu grupo: titular, login, saldo, custo e observação. A lista vem do serviço da Domus e se atualiza com um clique.">Each person sees only their group's accounts: holder, login, balance, cost and notes. The list comes from the Domus service and refreshes with one click.</p>
-      </div>
-      <div class="box">
-        <span class="num">02</span>
-        <h3 data-pt="Pontos e taxas de cada busca">Points and fees from every search</h3>
-        <p data-pt="No site da Azul, ela lê a busca de voo e registra o login usado, os pontos e as taxas, para a conferência das emissões no painel da Domus.">On the Azul website it reads the flight search and records the login used, the points and the fees, feeding the ticket reconciliation in the Domus dashboard.</p>
-      </div>
-      <div class="box">
-        <span class="num">03</span>
-        <h3 data-pt="Preço pronto para o cliente">Price ready for the customer</h3>
-        <p data-pt="Com o milheiro de custo e o de venda, calcula o preço de cada trecho e compara a tarifa em pontos com a de Pontos + Dinheiro.">Using the cost and sale price per thousand miles, it prices each leg and compares the points fare with the Points + Cash fare.</p>
-      </div>
+    <div class="job">
+      <h3 data-pt="Contas do grupo, sem planilha">Group accounts, no spreadsheet</h3>
+      <p data-pt="Cada pessoa vê só as contas do seu grupo: titular, login, saldo, custo e observação. A lista vem do serviço da Domus e se atualiza com um clique.">Each person sees only their group's accounts: holder, login, balance, cost and notes. The list comes from the Domus service and refreshes with one click.</p>
+    </div>
+    <div class="job">
+      <h3 data-pt="Pontos e taxas de cada busca">Points and fees from every search</h3>
+      <p data-pt="No site da Azul, ela lê a busca de voo e registra o login usado, os pontos e as taxas, para a conferência das emissões no painel da Domus.">On the Azul website it reads the flight search and records the login used, the points and the fees, feeding the ticket reconciliation in the Domus dashboard.</p>
+    </div>
+    <div class="job">
+      <h3 data-pt="Preço pronto para o cliente">Price ready for the customer</h3>
+      <p data-pt="Com o milheiro de custo e o de venda, calcula o preço de cada trecho e compara a tarifa em pontos com a de Pontos + Dinheiro.">Using the cost and sale price per thousand miles, it prices each leg and compares the points fare with the Points + Cash fare.</p>
     </div>
   </div>
 </section>
 
-<section class="sec" style="padding-top:0;">
+<section class="sec">
   <div class="wrap">
-    <span class="eyebrow" data-pt="Segurança e distribuição">Security and distribution</span>
     <h2 data-pt="Feita para uma equipe, não para um computador">Built for a team, not for one computer</h2>
-    <div class="facts">
-      <div class="fact"><span class="k" data-pt="Acesso">Access</span><span class="v" data-pt="Código individual, emitido pela Domus">Individual code, issued by Domus</span></div>
-      <div class="fact"><span class="k" data-pt="Senha e cartão">Passwords and cards</span><span class="v" data-pt="Nunca chegam à extensão">Never reach the extension</span></div>
-      <div class="fact"><span class="k" data-pt="Fim do acesso">Access revoked</span><span class="v" data-pt="A lista de contas é apagada daquele navegador">The account list is wiped from that browser</span></div>
-      <div class="fact"><span class="k" data-pt="Distribuição">Distribution</span><span class="v" data-pt="Chrome Web Store, em modo privado">Chrome Web Store, private listing</span></div>
-      <div class="fact"><span class="k" data-pt="Construção">Built with</span><span class="v" data-pt="JavaScript · Chrome Extensions (MV3) · serviço próprio na VPS · Claude Code">JavaScript · Chrome Extensions (MV3) · own service on a VPS · Claude Code</span></div>
-    </div>
+    <table class="facts">
+      <tr><th data-pt="Acesso">Access</th><td data-pt="Código individual, emitido pela Domus">Individual code, issued by Domus</td></tr>
+      <tr><th data-pt="Senha e cartão">Passwords and cards</th><td data-pt="Nunca chegam à extensão">Never reach the extension</td></tr>
+      <tr><th data-pt="Fim do acesso">Access revoked</th><td data-pt="A lista de contas é apagada daquele navegador">The account list is wiped from that browser</td></tr>
+      <tr><th data-pt="Distribuição">Distribution</th><td data-pt="Chrome Web Store, em modo privado">Chrome Web Store, private listing</td></tr>
+      <tr><th data-pt="Construção">Built with</th><td data-pt="JavaScript · Chrome Extensions (MV3) · serviço próprio na VPS · Claude Code">JavaScript · Chrome Extensions (MV3) · own service on a VPS · Claude Code</td></tr>
+    </table>
     <p class="note" data-pt="A extensão é de uso interno da Domus e o código é privado. As capturas usam dados de exemplo.">The extension is internal to Domus and the code is private. Screenshots use sample data.</p>
     <div class="cta">
-      <a href="./#domus" class="btn btn-solid" data-pt="Ver o ecossistema Domus">See the Domus ecosystem</a>
-      <a href="./#contato" class="btn btn-ghost" data-pt="Falar comigo">Get in touch</a>
+      <a href="./#domus" class="sign-btn"><span data-pt="Ver o ecossistema Domus">See the Domus ecosystem</span><svg class="arw" width="18" height="18"><use href="#i-right"/></svg></a>
+      <a href="./#contato" class="btn-line" data-pt="Falar comigo">Get in touch</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Gabriel Belcastro · <a href="./">portfolio.labsaero.com</a></div>
+  <div class="wrap">© 2026 Gabriel Belcastro · <a href="./">gabrielbelcastro.labsaero.com</a></div>
 </footer>
 
 <script>
@@ -166,8 +176,8 @@
       els.forEach(function(e){ e.textContent=(l==='pt')?e.getAttribute('data-pt'):e.getAttribute('data-en'); });
       document.documentElement.lang=(l==='pt')?'pt-BR':'en';
       document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-        b.querySelector('.l-en').style.color=(l==='en')?'var(--accent)':'var(--faint)';
-        b.querySelector('.l-pt').style.color=(l==='pt')?'var(--accent)':'var(--faint)';
+        b.querySelector('.l-en').classList.toggle('on', l==='en');
+        b.querySelector('.l-pt').classList.toggle('on', l==='pt');
       });
       try{ localStorage.setItem('lang',l); }catch(e){}
     }

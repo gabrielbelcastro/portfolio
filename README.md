@@ -2,7 +2,9 @@
 
 Voice AI, agents and automation. Self-contained static pages, no build step, vanilla JS, PT/EN toggle.
 
-**Live:** https://portfolio.labsaero.com/
+Design: airport-wayfinding signage (sign black, signal yellow, concourse grey; Barlow Condensed and Barlow). See `DESIGN.md`.
+
+**Live:** https://gabrielbelcastro.labsaero.com/ (canonical). https://portfolio.labsaero.com/ keeps working: it is the GitHub Pages domain in `CNAME`, and the canonical address proxies it.
 
 ## Pages
 - `index.html`: home. Opens with the voice AI work: a player with a test call by Clara, the Domus voice assistant (`audio/clara-ligacao-de-teste.mp3`, 1:42, fictitious data, simulated agent), how the call center works and the full transcript. Then the Domus ecosystem, the Labs Aero tools, more projects, about and contact.

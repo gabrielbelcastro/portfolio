@@ -5,163 +5,164 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Miles Terminal · Gabriel Belcastro</title>
 <meta name="description" content="Miles Terminal: terminal web para a operação de milhas, com processamento de extratos da LATAM, desempenho por emissor e busca de voos a partir de um print lido por IA. Projeto de Gabriel Belcastro." />
-<link rel="canonical" href="https://portfolio.labsaero.com/miles-terminal.html" />
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23121316'/%3E%3Ctext x='16' y='22' font-family='Arial,sans-serif' font-size='14' font-weight='700' fill='white' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E" />
+<link rel="canonical" href="https://gabrielbelcastro.labsaero.com/miles-terminal.html" />
+<meta name="theme-color" content="#111214" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='4' fill='%23111214'/%3E%3Ctext x='16' y='22' font-family='Arial Narrow,Arial,sans-serif' font-size='15' font-weight='700' fill='%23FFC629' text-anchor='middle'%3EGB%3C/text%3E%3C/svg%3E" />
 <meta property="og:type" content="article" />
-<meta property="og:url" content="https://portfolio.labsaero.com/miles-terminal.html" />
+<meta property="og:url" content="https://gabrielbelcastro.labsaero.com/miles-terminal.html" />
 <meta property="og:title" content="Miles Terminal · Gabriel Belcastro" />
 <meta property="og:description" content="Terminal web para a operação de milhas, com leitura por IA." />
 <meta property="og:image" content="https://portfolio.labsaero.com/screenshots/milesterminal.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500..800&family=Instrument+Sans:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Barlow:wght@400;500;600&display=swap" rel="stylesheet" />
 <style>
   :root{
-    --paper:#F7F5F0; --paper-2:#EFEBE2; --card:#FFFFFF; --ink:#121316; --text:#383B42; --muted:#6B6F78; --faint:#9A9DA4;
-    --line:#E2DED4; --line-2:#D3CEC2; --accent:#C23B12; --accent-ink:#A8320F; --accent-soft:#FBE9E1; --live:#13865A; --live-soft:#E2F3EA;
-    --r:18px; --shadow:0 1px 2px rgba(18,19,22,.05), 0 10px 30px rgba(18,19,22,.06); --t:.22s cubic-bezier(.4,0,.2,1); --maxw:1060px;
-    --display:"Bricolage Grotesque","Instrument Sans",system-ui,sans-serif; --body:"Instrument Sans",system-ui,sans-serif; --mono:"Geist Mono",ui-monospace,monospace;
+    --ground:#E4E6E3; --ground-2:#D7DAD6; --paper:#F4F5F3; --sign:#111214; --sign-2:#1D1F23; --sign-line:#33363C;
+    --yellow:#FFC629; --yellow-2:#FFD55C; --ink:#111214; --text:#2A2D31; --muted:#565B62; --rule:#AEB2AD;
+    --on-sign:#ECEDEE; --on-sign-muted:#A9AEB5;
+    --cond:"Barlow Condensed","Arial Narrow",sans-serif; --body:"Barlow","Segoe UI",sans-serif; --maxw:1120px; --ease:cubic-bezier(.16,1,.3,1);
   }
   *{ box-sizing:border-box; margin:0; padding:0; }
-  body{ font-family:var(--body); background:var(--paper); color:var(--text); line-height:1.6; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  html{ scrollbar-color:var(--sign) var(--ground-2); }
+  body{ font-family:var(--body); font-size:17px; background:var(--ground); color:var(--text); line-height:1.55; -webkit-font-smoothing:antialiased; overflow-x:hidden; }
+  ::selection{ background:var(--yellow); color:var(--ink); }
   a{ color:inherit; text-decoration:none; }
-  img{ display:block; max-width:100%; }
-  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 24px; }
-  @media(max-width:520px){ .wrap{ padding:0 16px; } }
-  h1,h2,h3{ color:var(--ink); font-family:var(--display); line-height:1.1; letter-spacing:-.025em; font-weight:700; }
-  .eyebrow{ font-family:var(--mono); font-size:12px; font-weight:500; letter-spacing:.08em; text-transform:uppercase; color:var(--accent); }
-  :focus-visible{ outline:2px solid var(--accent); outline-offset:3px; border-radius:6px; }
-  nav{ position:sticky; top:0; z-index:50; background:rgba(247,245,240,.9); backdrop-filter:saturate(160%) blur(14px); -webkit-backdrop-filter:saturate(160%) blur(14px); border-bottom:1px solid var(--line); }
-  .nav-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:62px; }
-  .back{ font-size:14px; font-weight:600; color:var(--muted); display:inline-flex; gap:8px; align-items:center; transition:color var(--t); }
-  .back:hover{ color:var(--accent); }
-  .brand{ display:flex; align-items:center; gap:10px; font-weight:700; font-size:15px; color:var(--ink); }
-  .brand .mark{ width:30px; height:30px; border-radius:9px; background:var(--ink); color:#fff; display:grid; place-items:center; font-family:var(--display); font-size:12px; }
-  .lang-btn{ display:inline-flex; gap:5px; align-items:center; font-family:var(--mono); font-size:12px; background:transparent; border:1px solid var(--line-2); border-radius:999px; padding:6px 11px; cursor:pointer; color:var(--faint); }
-  .lang-btn:hover{ border-color:var(--ink); }
-  .hero{ padding:60px 0 36px; }
-  .pills{ display:flex; flex-wrap:wrap; gap:8px; }
-  .pill{ display:inline-flex; align-items:center; gap:6px; font-size:12px; font-weight:600; padding:4px 11px; border-radius:999px; background:var(--card); color:var(--muted); border:1px solid var(--line); }
-  .pill.live{ color:var(--live); background:var(--live-soft); border-color:#C7E7D6; }
-  .dot{ width:7px; height:7px; border-radius:50%; background:currentColor; display:inline-block; }
-  h1{ font-size:clamp(36px,5.4vw,58px); font-weight:750; margin-top:18px; letter-spacing:-.035em; }
-  .lead{ font-size:clamp(16.5px,2vw,19px); max-width:64ch; margin-top:16px; }
-  .hero-shot{ margin-top:36px; }
-  .shots{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:18px; }
-  @media(max-width:820px){ .shots{ grid-template-columns:1fr; } }
-  figure{ background:#0B0D11; border:1px solid var(--line); border-radius:var(--r); overflow:hidden; box-shadow:var(--shadow); }
-  figure img{ width:100%; height:auto; aspect-ratio:16/10; object-fit:cover; object-position:top; }
-  figcaption{ background:var(--card); border-top:1px solid var(--line); padding:12px 16px; font-size:13px; color:var(--muted); }
-  .sec{ padding:56px 0; }
-  .sec h2{ font-size:clamp(24px,3.2vw,32px); margin:10px 0 24px; }
-  .grid3{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
-  @media(max-width:820px){ .grid3{ grid-template-columns:1fr; } }
-  .box{ border:1px solid var(--line); border-radius:var(--r); padding:22px; background:var(--card); }
-  .box h3{ font-size:18px; margin-bottom:8px; }
-  .box p{ font-size:14.5px; }
-  .num{ font-family:var(--mono); font-size:13px; color:var(--accent); display:block; margin-bottom:10px; }
-  .facts{ border:1px solid var(--line-2); border-radius:var(--r); overflow:hidden; background:var(--card); }
-  .fact{ display:flex; justify-content:space-between; gap:16px; padding:14px 18px; border-bottom:1px solid var(--line); font-size:14px; }
-  .fact:last-child{ border-bottom:0; }
-  .fact .k{ color:var(--muted); flex:0 0 auto; } .fact .v{ color:var(--ink); font-weight:600; text-align:right; }
-  @media(max-width:560px){ .fact{ flex-direction:column; gap:2px; } .fact .v{ text-align:left; } }
-  .note{ font-size:13px; color:var(--muted); margin-top:14px; }
-  .cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:28px; }
-  .btn{ display:inline-flex; align-items:center; gap:8px; font-size:14.5px; font-weight:600; border-radius:11px; padding:11px 19px; border:1px solid transparent; transition:background var(--t), border-color var(--t); }
-  .btn-solid{ background:var(--ink); color:#fff; } .btn-solid:hover{ background:#000; }
-  .btn-ghost{ background:var(--card); color:var(--ink); border-color:var(--line-2); } .btn-ghost:hover{ border-color:var(--ink); }
-  @media(max-width:520px){ .brand span:last-child{ display:none; } }
-  footer{ border-top:1px solid var(--line); padding:26px 0; font-size:13px; color:var(--muted); }
-  footer a:hover{ color:var(--ink); }
+  img{ display:block; max-width:100%; height:auto; }
+  button{ font:inherit; color:inherit; }
+  svg{ display:block; flex:0 0 auto; }
+  :focus-visible{ outline:3px solid var(--ink); outline-offset:3px; }
+  .band :focus-visible, footer :focus-visible{ outline-color:var(--yellow); }
+  .wrap{ max-width:var(--maxw); margin:0 auto; padding:0 32px; }
+  @media(max-width:600px){ .wrap{ padding:0 16px; } body{ font-size:16px; } }
+  h1,h2,h3{ font-family:var(--cond); color:var(--ink); line-height:1; font-weight:800; text-wrap:balance; }
+  p{ text-wrap:pretty; }
+  .arw{ transition:transform .25s var(--ease); }
+  a:hover .arw{ transform:translateX(3px); }
+  a:hover .arw.back{ transform:translateX(-3px); }
+  .band{ position:sticky; top:0; z-index:50; background:var(--sign); color:var(--on-sign); }
+  .band-in{ display:flex; align-items:center; justify-content:space-between; gap:16px; height:60px; }
+  .back{ display:inline-flex; align-items:center; gap:8px; font-family:var(--cond); font-weight:600; font-size:19px; color:var(--on-sign); }
+  .back:hover{ color:var(--yellow); }
+  .who{ display:flex; align-items:center; gap:10px; font-family:var(--cond); font-weight:700; font-size:20px; color:#fff; }
+  .who .tile{ width:32px; height:32px; background:var(--yellow); color:var(--ink); display:grid; place-items:center; border-radius:3px; font-size:15px; font-weight:800; }
+  .lang{ background:none; border:0; cursor:pointer; font-family:var(--cond); font-weight:600; font-size:17px; letter-spacing:.04em; color:var(--on-sign-muted); padding:8px 4px; }
+  .lang b{ font-weight:600; }
+  .lang .on{ color:#fff; text-decoration:underline; text-decoration-color:var(--yellow); text-decoration-thickness:2px; text-underline-offset:6px; }
+  @media(max-width:560px){ .who span:last-child{ display:none; } }
+  .hero{ padding:56px 0 0; }
+  .hero h1{ font-size:clamp(52px,8vw,96px); line-height:.95; }
+  .kind{ font-family:var(--cond); font-weight:600; font-size:19px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:12px; }
+  .lead{ font-size:clamp(18px,1.9vw,21px); max-width:64ch; margin-top:22px; }
+  .frame{ background:var(--sign); border-radius:6px; padding:10px; margin-top:36px; }
+  .frame img{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; border-radius:3px; }
+  .frame figcaption{ padding:12px 6px 4px; color:var(--on-sign-muted); font-size:15px; }
+  .sec{ padding:96px 0 0; }
+  @media(max-width:600px){ .sec{ padding-top:72px; } }
+  .sec h2{ font-size:clamp(36px,4.6vw,56px); padding-bottom:20px; border-bottom:4px solid var(--ink); }
+  .mod{ display:grid; grid-template-columns:minmax(0,5fr) minmax(0,7fr); gap:32px; padding:28px 0; border-bottom:1px solid var(--rule); align-items:center; }
+  @media(max-width:800px){ .mod{ grid-template-columns:1fr; gap:16px; } }
+  .mod .shot{ background:var(--sign); border-radius:4px; overflow:hidden; }
+  .mod .shot img{ width:100%; aspect-ratio:16/10; object-fit:cover; object-position:top; }
+  .mod h3{ font-size:clamp(28px,3vw,36px); }
+  .mod .k{ font-family:var(--cond); font-weight:600; font-size:16px; letter-spacing:.05em; text-transform:uppercase; color:var(--muted); margin-top:6px; }
+  .mod p{ margin-top:10px; max-width:60ch; }
+  .note{ font-size:15px; color:var(--muted); margin-top:18px; max-width:72ch; }
+  table.facts{ width:100%; border-collapse:separate; border-spacing:0; background:var(--paper); border:2px solid var(--ink); border-radius:6px; margin-top:28px; }
+  table.facts th, table.facts td{ text-align:left; vertical-align:top; padding:13px 18px; border-bottom:1px solid var(--rule); font-size:16px; }
+  table.facts tr:last-child th, table.facts tr:last-child td{ border-bottom:0; }
+  table.facts th{ font-weight:500; color:var(--muted); width:30%; }
+  table.facts td{ font-weight:600; color:var(--ink); font-variant-numeric:tabular-nums; }
+  @media(max-width:560px){ table.facts th, table.facts td{ display:block; width:auto; } table.facts th{ border-bottom:0; padding-bottom:0; } }
+  .cta{ display:flex; flex-wrap:wrap; gap:12px; margin-top:32px; }
+  .sign-btn{ display:inline-flex; align-items:center; gap:10px; background:var(--yellow); color:var(--ink); font-family:var(--cond); font-weight:700; font-size:19px; padding:9px 16px; border-radius:3px; transition:background .2s; }
+  .sign-btn:hover{ background:var(--yellow-2); }
+  .btn-line{ display:inline-flex; align-items:center; gap:10px; font-family:var(--cond); font-weight:700; font-size:19px; padding:7px 14px; border:2px solid var(--ink); border-radius:3px; color:var(--ink); transition:background .2s, color .2s; }
+  .btn-line:hover{ background:var(--ink); color:var(--yellow); }
+  footer{ margin-top:96px; background:var(--sign); color:var(--on-sign-muted); padding:22px 0; font-size:15px; }
+  footer a:hover{ color:#fff; }
+  @media(prefers-reduced-motion:reduce){ .arw{ transition:none; } }
 </style>
 </head>
 <body>
-<nav>
-  <div class="wrap nav-in">
-    <a href="./#labsaero" class="back">← <span data-pt="Voltar ao portfólio">Back to portfolio</span></a>
-    <a href="./" class="brand"><span class="mark">GB</span><span>Gabriel Belcastro</span></a>
-    <button class="lang-btn" data-lang-btn aria-label="Language / Idioma"><span class="l-en">EN</span><span class="sep">/</span><span class="l-pt">PT</span></button>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
+  <symbol id="i-right" viewBox="0 0 24 24"><path d="M4 12h15M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+  <symbol id="i-left" viewBox="0 0 24 24"><path d="M20 12H5M11 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="square"/></symbol>
+</defs></svg>
+
+<nav class="band">
+  <div class="wrap band-in">
+    <a href="./#labsaero" class="back"><svg class="arw back" width="18" height="18"><use href="#i-left"/></svg><span data-pt="Voltar ao portfólio">Back to portfolio</span></a>
+    <a href="./" class="who"><span class="tile">GB</span><span>Gabriel Belcastro</span></a>
+    <button class="lang" type="button" data-lang-btn aria-label="Language / Idioma"><b class="l-en">EN</b> / <b class="l-pt">PT</b></button>
   </div>
 </nav>
 
 <header class="hero">
   <div class="wrap">
-    <div class="pills">
-      <span class="pill" data-pt="App web">Web app</span>
-      <span class="pill" data-pt="Leitura por IA">AI reading</span>
-      <span class="pill">Labs Aero</span>
-    </div>
     <h1>Miles Terminal</h1>
+    <p class="kind" data-pt="App web · leitura por IA · Labs Aero">Web app · AI reading · Labs Aero</p>
     <p class="lead" data-pt="Um terminal web para quem opera milhas: num lugar só, processa cartões e extratos da LATAM, mostra o desempenho de cada emissor a partir da planilha de vendas e monta a busca de voos em várias companhias a partir de um print, lido por IA. Nasceu do meu próprio balcão e foi usado por emissores de agências com login individual.">A web terminal for people who run miles operations: in one place it processes LATAM cards and statements, shows each agent's performance from the sales spreadsheet and builds a multi-airline flight search from a screenshot, read by AI. It grew out of my own desk and was used by agency ticketing agents with individual logins.</p>
-    <figure class="hero-shot">
+    <figure class="frame">
       <img src="screenshots/milesterminal.jpg" alt="Tela inicial do Miles Terminal com os módulos Desempenho, CUV/Extracts e Buscador de voos" width="1200" height="750" />
       <figcaption data-pt="A tela inicial: cada módulo abre ao lado, sem sair do terminal.">The home screen: each module opens alongside, without leaving the terminal.</figcaption>
     </figure>
   </div>
 </header>
 
-<section class="sec" style="padding-top:20px;">
+<section class="sec">
   <div class="wrap">
-    <span class="eyebrow" data-pt="O que ele faz">What it does</span>
     <h2 data-pt="Três módulos, três trabalhos que eram manuais">Three modules, three jobs that used to be manual</h2>
-    <div class="grid3">
-      <div class="box">
-        <span class="num">01 · <span data-pt="Desempenho">Performance</span></span>
+    <div class="mod">
+      <div class="shot"><img src="screenshots/milesterminal-performance.jpg" alt="Módulo Desempenho do Miles Terminal, tela de entrada da planilha" loading="lazy" width="1280" height="800" /></div>
+      <div>
         <h3 data-pt="Métricas por emissor, sem servidor">Per-agent metrics, no server</h3>
+        <p class="k" data-pt="Módulo Desempenho">Performance module</p>
         <p data-pt="Lê a planilha de vendas (arquivo ou link do Google Sheets ao vivo, atualizado a cada 15 minutos) e mostra emissões, faturamento, lucro e margem de cada pessoa. Tudo é calculado no navegador; os dados nunca vão para o servidor.">Reads the sales spreadsheet (a file or a live Google Sheets link, refreshed every 15 minutes) and shows each person's tickets, revenue, profit and margin. Everything is computed in the browser; the data never reaches the server.</p>
       </div>
-      <div class="box">
-        <span class="num">02 · CUV/Extracts</span>
+    </div>
+    <div class="mod">
+      <div class="shot"><img src="screenshots/milesterminal-latam.jpg" alt="Módulo CUV do Miles Terminal" loading="lazy" width="1280" height="800" /></div>
+      <div>
         <h3 data-pt="Cartões e extratos da LATAM">LATAM cards and statements</h3>
+        <p class="k" data-pt="Módulo CUV/Extracts">CUV/Extracts module</p>
         <p data-pt="Abre a reserva, calcula venda, custo, taxas e comissão pelo milheiro e extrai os dados do PDF do extrato para a conferência da emissão.">Opens the booking, works out sale, cost, fees and commission from the price per thousand miles, and pulls data from the statement PDF to check the ticket.</p>
       </div>
-      <div class="box">
-        <span class="num">03 · <span data-pt="Buscador">Search</span></span>
+    </div>
+    <div class="mod">
+      <div class="shot"><img src="screenshots/milesterminal-buscador.jpg" alt="Buscador de voos do Miles Terminal com envio de print" loading="lazy" width="1280" height="800" /></div>
+      <div>
         <h3 data-pt="Busca de voos a partir de um print">Flight search from a screenshot</h3>
+        <p class="k" data-pt="Módulo Buscador">Search module</p>
         <p data-pt="O emissor cola o print do itinerário que o cliente mandou; a IA lê origem, destino e datas, e o terminal gera a busca pronta em Smiles, LATAM, Azul e American.">The agent pastes the itinerary screenshot the customer sent; AI reads origin, destination and dates, and the terminal builds the ready search on Smiles, LATAM, Azul and American.</p>
       </div>
-    </div>
-    <div class="shots">
-      <figure>
-        <img src="screenshots/milesterminal-performance.jpg" alt="Módulo Desempenho do Miles Terminal, tela de entrada da planilha" loading="lazy" width="1280" height="800" />
-        <figcaption data-pt="Desempenho: planilha por arquivo ou link ao vivo, processada só no navegador.">Performance: spreadsheet by file or live link, processed only in the browser.</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshots/milesterminal-latam.jpg" alt="Módulo CUV do Miles Terminal" loading="lazy" width="1280" height="800" />
-        <figcaption data-pt="CUV: reserva, milheiro, taxas e comissão numa tela.">CUV: booking, price per thousand miles, fees and commission on one screen.</figcaption>
-      </figure>
-      <figure>
-        <img src="screenshots/milesterminal-buscador.jpg" alt="Buscador de voos do Miles Terminal com envio de print" loading="lazy" width="1280" height="800" />
-        <figcaption data-pt="Buscador: arrastar ou colar o print do itinerário.">Search: drag or paste the itinerary screenshot.</figcaption>
-      </figure>
     </div>
     <p class="note" data-pt="Capturas das telas sem dados, tiradas do código do projeto. O terminal exige login com conta Google autorizada, por isso não há demonstração aberta.">Screenshots of the screens with no data, taken from the project's code. The terminal requires an authorized Google login, so there is no open demo.</p>
   </div>
 </section>
 
-<section class="sec" style="padding-top:0;">
+<section class="sec">
   <div class="wrap">
-    <span class="eyebrow" data-pt="Como foi construído">How it was built</span>
     <h2 data-pt="Um terminal, dois servidores, nenhum dado de venda guardado">One terminal, two servers, no sales data stored</h2>
-    <div class="facts">
-      <div class="fact"><span class="k" data-pt="Frente">Front end</span><span class="v" data-pt="Casca com módulos em iframe · Tailwind · Chart.js · SheetJS em Web Worker">Shell with iframe modules · Tailwind · Chart.js · SheetJS in a Web Worker</span></div>
-      <div class="fact"><span class="k" data-pt="Servidores">Servers</span><span class="v">Node.js + Express · Python</span></div>
-      <div class="fact"><span class="k" data-pt="IA e leitura">AI and reading</span><span class="v" data-pt="Claude (visão) para prints · OCR.space com Tesseract de reserva">Claude (vision) for screenshots · OCR.space with Tesseract as fallback</span></div>
-      <div class="fact"><span class="k" data-pt="Automação">Automation</span><span class="v">Puppeteer · Playwright</span></div>
-      <div class="fact"><span class="k" data-pt="Acesso">Access</span><span class="v" data-pt="Login Google com lista de autorizados · CSP restrita">Google login with an allow-list · strict CSP</span></div>
-      <div class="fact"><span class="k" data-pt="Infraestrutura">Infrastructure</span><span class="v" data-pt="VPS própria · Docker Swarm · Traefik · pm2">Own VPS · Docker Swarm · Traefik · pm2</span></div>
-      <div class="fact"><span class="k" data-pt="Uso registrado">Recorded use</span><span class="v" data-pt="84 logins de 33 pessoas, de abril a junho de 2026">84 logins by 33 people, April to June 2026</span></div>
-    </div>
+    <table class="facts">
+      <tr><th data-pt="Frente">Front end</th><td data-pt="Casca com módulos em iframe · Tailwind · Chart.js · SheetJS em Web Worker">Shell with iframe modules · Tailwind · Chart.js · SheetJS in a Web Worker</td></tr>
+      <tr><th data-pt="Servidores">Servers</th><td>Node.js + Express · Python</td></tr>
+      <tr><th data-pt="IA e leitura">AI and reading</th><td data-pt="Claude (visão) para prints · OCR.space com Tesseract de reserva">Claude (vision) for screenshots · OCR.space with Tesseract as fallback</td></tr>
+      <tr><th data-pt="Automação">Automation</th><td>Puppeteer · Playwright</td></tr>
+      <tr><th data-pt="Acesso">Access</th><td data-pt="Login Google com lista de autorizados · CSP restrita">Google login with an allow-list · strict CSP</td></tr>
+      <tr><th data-pt="Infraestrutura">Infrastructure</th><td data-pt="VPS própria · Docker Swarm · Traefik · pm2">Own VPS · Docker Swarm · Traefik · pm2</td></tr>
+      <tr><th data-pt="Uso registrado">Recorded use</th><td data-pt="84 logins de 33 pessoas, de abril a junho de 2026">84 logins by 33 people, April to June 2026</td></tr>
+    </table>
     <p class="note" data-pt="O código é privado. O número de logins vem do registro de acessos do próprio terminal.">The code is private. The login count comes from the terminal's own access log.</p>
     <div class="cta">
-      <a href="./#projetos" class="btn btn-solid" data-pt="Ver os outros projetos">See the other projects</a>
-      <a href="./#contato" class="btn btn-ghost" data-pt="Falar comigo">Get in touch</a>
+      <a href="./#projetos" class="sign-btn"><span data-pt="Ver os outros projetos">See the other projects</span><svg class="arw" width="18" height="18"><use href="#i-right"/></svg></a>
+      <a href="./#contato" class="btn-line" data-pt="Falar comigo">Get in touch</a>
     </div>
   </div>
 </section>
 
 <footer>
-  <div class="wrap">© 2026 Gabriel Belcastro · <a href="./">portfolio.labsaero.com</a></div>
+  <div class="wrap">© 2026 Gabriel Belcastro · <a href="./">gabrielbelcastro.labsaero.com</a></div>
 </footer>
 
 <script>
@@ -176,8 +177,8 @@
       els.forEach(function(e){ e.textContent=(l==='pt')?e.getAttribute('data-pt'):e.getAttribute('data-en'); });
       document.documentElement.lang=(l==='pt')?'pt-BR':'en';
       document.querySelectorAll('[data-lang-btn]').forEach(function(b){
-        b.querySelector('.l-en').style.color=(l==='en')?'var(--accent)':'var(--faint)';
-        b.querySelector('.l-pt').style.color=(l==='pt')?'var(--accent)':'var(--faint)';
+        b.querySelector('.l-en').classList.toggle('on', l==='en');
+        b.querySelector('.l-pt').classList.toggle('on', l==='pt');
       });
       try{ localStorage.setItem('lang',l); }catch(e){}
     }
